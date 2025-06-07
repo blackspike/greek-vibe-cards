@@ -1,0 +1,17 @@
+{
+  "name": "Greek VibeCards",
+  "short_name": "VibeCards",
+  "description": "A vibe-coded flashcard app for learning the Greek alphabet",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0052b4",
+  "theme_color": "#0052b4",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

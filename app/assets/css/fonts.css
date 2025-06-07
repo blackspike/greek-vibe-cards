@@ -1,0 +1,90 @@
+/* Gentium Font Family */
+@font-face {
+    font-family: 'Gentium';
+    src: url('/fonts/Gentium-Regular.woff2') format('woff2'),
+         url('/fonts/Gentium-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Gentium';
+    src: url('/fonts/Gentium-Italic.woff2') format('woff2'),
+         url('/fonts/Gentium-Italic.woff') format('woff');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Gentium';
+    src: url('/fonts/Gentium-Medium.woff2') format('woff2'),
+         url('/fonts/Gentium-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Gentium';
+    src: url('/fonts/Gentium-MediumItalic.woff2') format('woff2'),
+         url('/fonts/Gentium-MediumItalic.woff') format('woff');
+    font-weight: 500;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Gentium';
+    src: url('/fonts/Gentium-SemiBold.woff2') format('woff2'),
+         url('/fonts/Gentium-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Gentium';
+    src: url('/fonts/Gentium-SemiBoldItalic.woff2') format('woff2'),
+         url('/fonts/Gentium-SemiBoldItalic.woff') format('woff');
+    font-weight: 600;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Gentium';
+    src: url('/fonts/Gentium-Bold.woff2') format('woff2'),
+         url('/fonts/Gentium-Bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Gentium';
+    src: url('/fonts/Gentium-BoldItalic.woff2') format('woff2'),
+         url('/fonts/Gentium-BoldItalic.woff') format('woff');
+    font-weight: 700;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Gentium';
+    src: url('/fonts/Gentium-ExtraBold.woff2') format('woff2'),
+         url('/fonts/Gentium-ExtraBold.woff') format('woff');
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Gentium';
+    src: url('/fonts/Gentium-ExtraBoldItalic.woff2') format('woff2'),
+         url('/fonts/Gentium-ExtraBoldItalic.woff') format('woff');
+    font-weight: 800;
+    font-style: italic;
+    font-display: swap;
+}
