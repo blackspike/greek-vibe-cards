@@ -13,6 +13,7 @@ const emit = defineEmits(['answer', 'next']);
 const isCorrect = ref(null);
 const isAnswered = ref(false);
 const showOutline = ref(false);
+const incorrectButton = ref(null);
 
 // Get unique equivalents from the Greek alphabet and sort them alphabetically
 const uniqueEquivalents = [
@@ -37,11 +38,13 @@ const handleAnswer = (letter) => {
       // Reset state for next slide
       isCorrect.value = null;
       isAnswered.value = false;
+      incorrectButton.value = null;
     }, 500);
   } else {
     isCorrect.value = false;
     isAnswered.value = true;
     showOutline.value = true;
+    incorrectButton.value = letter;
     emit('answer', { correct: false, letter: props.letter });
 
     // Store failed letter in localStorage
@@ -54,6 +57,7 @@ const handleAnswer = (letter) => {
     // Hide outline after 300ms
     setTimeout(() => {
       showOutline.value = false;
+      incorrectButton.value = null;
     }, 300);
 
     // Reset state after 300ms
@@ -82,9 +86,9 @@ const handleAnswer = (letter) => {
               :key="equiv"
               @click="handleAnswer(equiv)"
               :class="[
-                'text-xl bg-sky-500/20 hover:bg-sky-500/30 border-sky-500/10 border-2 rounded-lg p-1 transition-all duration-300 font-semibold',
-                showOutline && equiv === letter.equivalent ? 'border-green-500 ring-4 ring-green-500/50' : '',
-                showOutline && equiv !== letter.equivalent ? 'border-red-500 ring-4 ring-red-500/50' : 'border-sky-300'
+                'text-xl bg-sky-500/20 border-sky-500/10 hover:bg-sky-500/30 border-2 rounded-lg p-1 transition-all duration-300 font-semibold ',
+                showOutline && isCorrect && equiv === letter.equivalent ? 'border-green-500 ring-4 ring-green-500/50' : '',
+                showOutline && !isCorrect && equiv === incorrectButton ? 'border-red-500 ring-4 ring-red-500/50' : 'border-sky-300'
               ]"
             >
               {{ equiv.toUpperCase() }}
