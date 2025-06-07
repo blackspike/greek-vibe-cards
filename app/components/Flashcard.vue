@@ -107,7 +107,7 @@ const handleAnswer = (letter) => {
 <template>
   <div
     class="h-full flex flex-col items-center justify-center p-8 text-white bg-gradient-to-br from-sky-600 to-sky-800">
-    <div class="flex h-full items-center font-display text-[16rem] font-medium leading-none">
+    <div style="text-trim-block: both;" class="flex h-full items-center font-sans text-[14rem] font-medium leading-none">
       {{ letter.letter }}
     </div>
 
@@ -117,9 +117,10 @@ const handleAnswer = (letter) => {
 
           <div class="grid grid-cols-4 gap-2">
             <button v-for="equiv in uniqueEquivalents" :key="equiv" @click="handleAnswer(equiv)" :class="[
-                'text-xl bg-sky-500/20 border-sky-500/10 hover:bg-sky-500/30 border-2 rounded-lg p-1 transition-all duration-300 font-semibold ',
-                showOutline && isCorrect && equiv === letter.equivalent ? 'border-green-500 ring-4 ring-green-500/50' : '',
-                showOutline && !isCorrect && equiv === incorrectButton ? 'border-red-500 ring-4 ring-red-500/50' : 'border-sky-300'
+                'text-xl border-2 rounded-lg p-1 transition-all duration-300 font-semibold',
+                showOutline && isCorrect && equiv === letter.equivalent ? '!bg-green-500/40 border-green-500 ring-4 ring-green-500/50' : '',
+                showOutline && !isCorrect && equiv === incorrectButton ? '!bg-red-500/40 border-red-500 ring-4 ring-red-500/50' : '',
+                'bg-sky-500/20 border-sky-500/10 hover:bg-sky-500/30'
               ]">
               {{ equiv.toUpperCase() }}
             </button>

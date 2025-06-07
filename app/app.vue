@@ -40,7 +40,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <main class="bg-sky-900 h-dvh p-4">
+  <main class="bg-sky-900 h-dvh p-4 font-sans">
     <NuxtRouteAnnouncer />
 
     <div class="max-w-md mx-auto h-full flex flex-col">
