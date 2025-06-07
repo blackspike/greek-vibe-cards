@@ -24,13 +24,12 @@ export default defineNuxtConfig({
         { property: 'twitter:url', content: 'https://greek-vibecards.vercel.app/' },
         { property: 'twitter:title', content: 'Greek VibeCards' },
         { property: 'twitter:description', content: 'A vibe-coded flashcard app for learning the Greek alphabet' },
-        { property: 'twitter:image', content: '/1200x630.png' },
-        // Apple Touch Icon
-        { name: 'apple-touch-icon', content: '/1024.png' }
+        { property: 'twitter:image', content: '/1200x630.png' }
       ],
       link: [
         { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
-        { rel: 'manifest', href: '/manifest.json' }
+        { rel: 'manifest', href: '/manifest.json' },
+        { rel: 'apple-touch-icon', href: '/1024.png' }
       ]
     }
   },
