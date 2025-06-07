@@ -1,10 +1,68 @@
 <script setup>
-defineProps({
+import { ref } from 'vue';
+
+const props = defineProps({
   letter: {
     type: Object,
     required: true
   }
 });
+
+const emit = defineEmits(['answer', 'next']);
+
+const isCorrect = ref(null);
+const isAnswered = ref(false);
+const showOutline = ref(false);
+
+// Get unique equivalents from the Greek alphabet and sort them alphabetically
+const uniqueEquivalents = [
+  'ch', 'd', 'f', 'g', 'i', 'l', 'o', 'ps', 'r', 's', 'th', 'v', 'x', 'y'
+].sort();
+
+const handleAnswer = (letter) => {
+  if (letter === props.letter.equivalent) {
+    isCorrect.value = true;
+    isAnswered.value = true;
+    showOutline.value = true;
+    emit('answer', { correct: true, letter: props.letter });
+
+    // Hide outline after 500ms
+    setTimeout(() => {
+      showOutline.value = false;
+    }, 500);
+
+    // Move to next slide after 500ms
+    setTimeout(() => {
+      emit('next');
+      // Reset state for next slide
+      isCorrect.value = null;
+      isAnswered.value = false;
+    }, 500);
+  } else {
+    isCorrect.value = false;
+    isAnswered.value = true;
+    showOutline.value = true;
+    emit('answer', { correct: false, letter: props.letter });
+
+    // Store failed letter in localStorage
+    const failedLetters = JSON.parse(localStorage.getItem('failedLetters') || '[]');
+    if (!failedLetters.includes(props.letter.letter)) {
+      failedLetters.push(props.letter.letter);
+      localStorage.setItem('failedLetters', JSON.stringify(failedLetters));
+    }
+
+    // Hide outline after 300ms
+    setTimeout(() => {
+      showOutline.value = false;
+    }, 300);
+
+    // Reset state after 300ms
+    setTimeout(() => {
+      isCorrect.value = null;
+      isAnswered.value = false;
+    }, 300);
+  }
+};
 </script>
 
 <template>
@@ -14,24 +72,24 @@ defineProps({
       {{ letter.letter }}
     </div>
 
-    <div class="space-y-12 w-full">
-      <div class="grid grid-cols-2 gap-16">
-        <div>
-          <h3 class="text-xl font-semibold mb-6 text-sky-300">
-            Name
-          </h3>
-          <p class="text-6xl">
-            {{ letter.name }}
-          </p>
-        </div>
+    <div class="space-y-8 w-full">
+      <div class="flex justify-center">
+        <div class="w-full max-w-2xl">
 
-        <div>
-          <h3 class="text-xl font-semibold mb-6 text-sky-300">
-            English
-          </h3>
-          <p class="text-6xl">
-            {{ letter.equivalent }}
-          </p>
+          <div class="grid grid-cols-4 gap-2">
+            <button
+              v-for="equiv in uniqueEquivalents"
+              :key="equiv"
+              @click="handleAnswer(equiv)"
+              :class="[
+                'text-xl bg-sky-500/20 hover:bg-sky-500/30 border-sky-500/10 border-2 rounded-lg p-1 transition-all duration-300 font-semibold',
+                showOutline && equiv === letter.equivalent ? 'border-green-500 ring-4 ring-green-500/50' : '',
+                showOutline && equiv !== letter.equivalent ? 'border-red-500 ring-4 ring-red-500/50' : 'border-sky-300'
+              ]"
+            >
+              {{ equiv.toUpperCase() }}
+            </button>
+          </div>
         </div>
       </div>
 
@@ -39,7 +97,7 @@ defineProps({
         <h3 class="text-xl font-semibold mb-6 text-sky-300">
           Example - <span class="text-sky-200">{{ letter.example.english }}</span>
         </h3>
-        <p class="text-6xl  font-display">
+        <p class="text-6xl font-display">
           {{ letter.example.greek }}
         </p>
       </div>
