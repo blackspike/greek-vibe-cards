@@ -40,27 +40,17 @@ onMounted(() => {
 </script>
 
 <template>
-  <main class="bg-sky-900 h-dvh p-4 font-sans">
+  <main class="bg-sky-900 h-dvh p-4 font-sans flex justify-center items-center">
     <NuxtRouteAnnouncer />
 
-    <div class="max-w-md mx-auto h-full flex flex-col">
+    <div class="max-w-md mx-auto h-full flex flex-col  max-h-[700px]">
       <h1 class="sr-only text-4xl font-bold text-center text-white mb-8">Greek Alphabet Flashcards</h1>
 
       <div class="flex-1 rounded-xl shadow-2xl bg-sky-700 overflow-hidden">
-        <Swiper
-          :slides-per-view="1"
-          :space-between="30"
-          :loop="true"
-          :allow-touch-move="false"
-          class="h-full"
-          @swiper="swiperInstance = $event"
-        >
+        <Swiper :slides-per-view="1" :space-between="30" :loop="true" :allow-touch-move="false" class="h-full"
+          @swiper="swiperInstance = $event">
           <SwiperSlide v-for="letter in shuffledAlphabet" :key="letter.letter">
-            <Flashcard
-              :letter="letter"
-              @answer="handleAnswer"
-              @next="nextSlide"
-            />
+            <Flashcard :letter="letter" @answer="handleAnswer" @next="nextSlide" />
           </SwiperSlide>
         </Swiper>
       </div>
