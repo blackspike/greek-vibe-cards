@@ -14,6 +14,7 @@ const isCorrect = ref(null);
 const isAnswered = ref(false);
 const showOutline = ref(false);
 const incorrectButton = ref(null);
+const isPlaying = ref(false);
 
 // Get unique equivalents from the Greek alphabet and sort them alphabetically
 const uniqueEquivalents = [
@@ -37,6 +38,22 @@ const updateFailedLetters = (letter, isCorrect) => {
   }
 
   localStorage.setItem('failedLetters', JSON.stringify(failedLetters));
+};
+
+const playExample = () => {
+  if (isPlaying.value) return;
+
+  isPlaying.value = true;
+  const audio = new Audio(`/voice-over/${props.letter.example.english.toLowerCase()}.mp3`);
+
+  audio.onended = () => {
+    isPlaying.value = false;
+  };
+
+  audio.play().catch(error => {
+    console.error('Error playing audio:', error);
+    isPlaying.value = false;
+  });
 };
 
 const handleAnswer = (letter) => {
@@ -99,16 +116,11 @@ const handleAnswer = (letter) => {
         <div class="w-full max-w-2xl">
 
           <div class="grid grid-cols-4 gap-2">
-            <button
-              v-for="equiv in uniqueEquivalents"
-              :key="equiv"
-              @click="handleAnswer(equiv)"
-              :class="[
+            <button v-for="equiv in uniqueEquivalents" :key="equiv" @click="handleAnswer(equiv)" :class="[
                 'text-xl bg-sky-500/20 border-sky-500/10 hover:bg-sky-500/30 border-2 rounded-lg p-1 transition-all duration-300 font-semibold ',
                 showOutline && isCorrect && equiv === letter.equivalent ? 'border-green-500 ring-4 ring-green-500/50' : '',
                 showOutline && !isCorrect && equiv === incorrectButton ? 'border-red-500 ring-4 ring-red-500/50' : 'border-sky-300'
-              ]"
-            >
+              ]">
               {{ equiv.toUpperCase() }}
             </button>
           </div>
@@ -119,9 +131,15 @@ const handleAnswer = (letter) => {
         <h3 class="text-xl font-semibold mb-2 text-sky-300">
           Example - <span class="text-sky-200">{{ letter.example.english }}</span>
         </h3>
-        <p class="text-6xl font-display">
-          {{ letter.example.greek }}
-        </p>
+        <div class="flex items-end gap-4">
+          <p class="text-6xl font-display">
+            {{ letter.example.greek }}
+          </p>
+          <button @click="playExample" :disabled="isPlaying"
+            class="p-3 flex aspect-square rounded-full bg-sky-500/20 hover:bg-sky-500/30 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+            <Icon name="tabler:volume" size="24" />
+          </button>
+        </div>
       </div>
     </div>
   </div>
