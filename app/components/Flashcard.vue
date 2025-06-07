@@ -27,19 +27,19 @@ const handleAnswer = (letter) => {
     showOutline.value = true;
     emit('answer', { correct: true, letter: props.letter });
 
-    // Hide outline after 500ms
+    // Hide outline after 300ms
     setTimeout(() => {
       showOutline.value = false;
-    }, 500);
+    }, 300);
 
-    // Move to next slide after 500ms
+    // Move to next slide after 300ms
     setTimeout(() => {
       emit('next');
       // Reset state for next slide
       isCorrect.value = null;
       isAnswered.value = false;
       incorrectButton.value = null;
-    }, 500);
+    }, 300);
   } else {
     isCorrect.value = false;
     isAnswered.value = true;
@@ -71,8 +71,8 @@ const handleAnswer = (letter) => {
 
 <template>
   <div
-    class="h-full flex flex-col items-center justify-center px-8 py-12 pt-0 text-white bg-gradient-to-br from-sky-600 to-sky-800">
-    <div class="font-display text-[20rem] font-medium leading-none">
+    class="h-full flex flex-col items-center justify-center p-8 text-white bg-gradient-to-br from-sky-600 to-sky-800">
+    <div class="flex h-full items-center font-display text-[16rem] font-medium leading-none">
       {{ letter.letter }}
     </div>
 
@@ -98,7 +98,7 @@ const handleAnswer = (letter) => {
       </div>
 
       <div class="w-full">
-        <h3 class="text-xl font-semibold mb-6 text-sky-300">
+        <h3 class="text-xl font-semibold mb-2 text-sky-300">
           Example - <span class="text-sky-200">{{ letter.example.english }}</span>
         </h3>
         <p class="text-6xl font-display">
