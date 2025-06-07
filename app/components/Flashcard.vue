@@ -20,6 +20,25 @@ const uniqueEquivalents = [
   'ch', 'd', 'f', 'g', 'i', 'l', 'o', 'ps', 'r', 's', 'th', 'v', 'x', 'y'
 ].sort();
 
+const updateFailedLetters = (letter, isCorrect) => {
+  const failedLetters = JSON.parse(localStorage.getItem('failedLetters') || '{}');
+
+  if (isCorrect) {
+    // If correct, decrease count or remove if 0
+    if (failedLetters[letter]) {
+      failedLetters[letter]--;
+      if (failedLetters[letter] <= 0) {
+        delete failedLetters[letter];
+      }
+    }
+  } else {
+    // If incorrect, increment count
+    failedLetters[letter] = (failedLetters[letter] || 0) + 1;
+  }
+
+  localStorage.setItem('failedLetters', JSON.stringify(failedLetters));
+};
+
 const handleAnswer = (letter) => {
   if (letter === props.letter.equivalent) {
     isCorrect.value = true;
@@ -27,12 +46,15 @@ const handleAnswer = (letter) => {
     showOutline.value = true;
     emit('answer', { correct: true, letter: props.letter });
 
-    // Hide outline after 300ms
+    // Update failed letters count
+    updateFailedLetters(props.letter.letter, true);
+
+    // Hide outline after 500ms
     setTimeout(() => {
       showOutline.value = false;
     }, 300);
 
-    // Move to next slide after 300ms
+    // Move to next slide after 500ms
     setTimeout(() => {
       emit('next');
       // Reset state for next slide
@@ -47,12 +69,8 @@ const handleAnswer = (letter) => {
     incorrectButton.value = letter;
     emit('answer', { correct: false, letter: props.letter });
 
-    // Store failed letter in localStorage
-    const failedLetters = JSON.parse(localStorage.getItem('failedLetters') || '[]');
-    if (!failedLetters.includes(props.letter.letter)) {
-      failedLetters.push(props.letter.letter);
-      localStorage.setItem('failedLetters', JSON.stringify(failedLetters));
-    }
+    // Update failed letters count
+    updateFailedLetters(props.letter.letter, false);
 
     // Hide outline after 300ms
     setTimeout(() => {
