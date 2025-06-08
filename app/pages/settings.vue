@@ -42,12 +42,12 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="bg-sky-600/50 p-8 rounded-4xl h-full max-h-[80dvh] flex flex-col">
-    <h1 class="text-3xl font-bold text-white mb-8">Practice Stats</h1>
+  <div class="bg-sky-600/50 py-8 px-4 rounded-4xl h-full max-h-[80dvh] flex flex-col">
+    <h1 class="text-3xl font-bold text-white text-center">Practice Stats</h1>
 
     <div v-if="sortedFailedLetters.length > 0" class="flex-1 min-h-0">
       <div class="h-full flex flex-col">
-        <h2 class="text-xl font-semibold text-sky-200 mb-4">Frequently Missed Letters</h2>
+        <h2 class="text-xl font-semibold text-sky-200 mb-4 text-center">Frequently Missed Letters</h2>
         <div class="space-y-3 overflow-y-auto flex-1 min-h-0 pr-2">
           <div v-for="item in sortedFailedLetters" :key="item.letter"
             class="flex items-center justify-between p-4 rounded-lg bg-sky-500/10 hover:bg-sky-500/20 transition-colors">
