@@ -97,7 +97,7 @@ const handleAnswer = (letter) => {
 
 <template>
   <div
-    class="h-full flex flex-col items-center justify-center p-6 text-white shadow-2xl rounded-lg bg-gradient-to-br from-sky-600 to-sky-800">
+    class="h-full flex flex-col items-center justify-center p-6 text-white shadow-2xl rounded-4xl bg-gradient-to-br from-sky-600 to-sky-800">
 
     <div class="flex h-full items-center text-[14rem] font-medium leading-none font-display -mt-10">
       {{ letter.letter }}
@@ -127,7 +127,8 @@ const handleAnswer = (letter) => {
       <div class="w-full">
         <details class="group">
           <summary class="text-xl font-semibold text-sky-300 cursor-pointer hover:text-sky-200 flex items-center gap-2">
-            <Icon name="tabler:chevron-down" size="24" class="flex-shrink-0 group-open:rotate-180 transition-transform" />
+            <Icon name="tabler:chevron-down" size="24"
+              class="flex-shrink-0 rotate-180 group-open:rotate-0 transition-transform" />
             Hint
           </summary>
           <div class="flex items-baseline justify-between mt-4">
