@@ -48,7 +48,7 @@ onMounted(() => {
     <div v-if="sortedFailedLetters.length > 0" class="flex-1 min-h-0">
       <div class="h-full flex flex-col">
         <h2 class="text-xl font-semibold text-sky-200 mb-4 text-center">Frequently Missed Letters</h2>
-        <div class="space-y-3 overflow-y-auto flex-1 min-h-0 pr-2">
+        <div class="space-y-1 overflow-y-auto flex-1 min-h-0 pr-2">
           <div v-for="item in sortedFailedLetters" :key="item.letter"
             class="flex items-center justify-between p-4 rounded-lg bg-sky-500/10 hover:bg-sky-500/20 transition-colors">
             <div class="flex items-center gap-6">
@@ -60,14 +60,14 @@ onMounted(() => {
             </div>
             <div class="flex items-center gap-6">
               <div class="text-right">
-                <span class="text-2xl font-bold text-sky-300">{{ item.count }}</span>
+                <span class="font-medium text-sky-300">{{ item.count }}</span>
                 <p class="text-sm text-sky-200 opacity-75">mistakes</p>
               </div>
               <button @click="removeLetter(item.letter)"
-                class="p-2 rounded-lg bg-sky-500/10 hover:bg-red-500 transition-colors group"
+                class="p-2 rounded-lg bg-sky-500/10 hover:bg-red-500 transition-colors group flex items-center justify-center"
                 aria-label="Remove from failed letters">
                 <Icon name="tabler:trash" size="32"
-                  class="w-5 h-5 text-sky-200 group-hover:text-red-300 transition-colors" />
+                  class="w-5 h-5 text-sky-200 group-hover:text-white transition-colors" />
               </button>
             </div>
           </div>
