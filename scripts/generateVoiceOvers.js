@@ -27,14 +27,34 @@ if (!fs.existsSync(voiceOverDir)) {
 
 // Get unique example words (only uppercase versions to avoid duplicates)
 const uniqueExamples = greekAlphabet
-  .filter(item => item.letter === item.letter.toUpperCase()) // Only uppercase letters
+  .filter(item => {
+    // Get all letters that have uppercase versions
+    const hasUppercaseVersion = greekAlphabet.some(l => l.letter.toUpperCase() === item.letter.toUpperCase() && l.letter === l.letter.toUpperCase());
+    // Include if it's uppercase OR if it doesn't have an uppercase version
+    const shouldInclude = item.letter === item.letter.toUpperCase() || !hasUppercaseVersion;
+    if (shouldInclude) {
+      console.log(`Including: ${item.letter} (${item.example.english})`);
+    }
+    return shouldInclude;
+  })
   .map(item => ({
     greek: item.example.greek,
     english: item.example.english.toLowerCase()
   }));
 
+console.log('\nFiltered examples:', uniqueExamples);
+
 // Function to generate a single voice-over
-function generateVoiceOver(greekText, englishName) {
+async function generateVoiceOver(greekText, englishName) {
+  const outputPath = path.join(process.cwd(), 'public', 'voice-over', `${englishName}.mp3`);
+
+  // Skip if file already exists
+  if (fs.existsSync(outputPath)) {
+    console.log(`Skipping: ${englishName}.mp3 (already exists)`);
+    return;
+  }
+
+  console.log(`Generating: ${englishName}.mp3`);
   return new Promise((resolve, reject) => {
     const options = {
       hostname: 'api.elevenlabs.io',
