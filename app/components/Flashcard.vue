@@ -25,20 +25,11 @@ const uniqueEquivalents = [
 const updateFailedLetters = (letter, isCorrect) => {
   const failedLetters = JSON.parse(localStorage.getItem('failedLetters') || '{}');
 
-  if (isCorrect) {
-    // If correct, decrease count or remove if 0
-    if (failedLetters[letter]) {
-      failedLetters[letter]--;
-      if (failedLetters[letter] <= 0) {
-        delete failedLetters[letter];
-      }
-    }
-  } else {
+  if (!isCorrect) {
     // If incorrect, increment count
     failedLetters[letter] = (failedLetters[letter] || 0) + 1;
+    localStorage.setItem('failedLetters', JSON.stringify(failedLetters));
   }
-
-  localStorage.setItem('failedLetters', JSON.stringify(failedLetters));
 };
 
 const playExample = () => {
@@ -107,12 +98,13 @@ const handleAnswer = (letter) => {
 
 <template>
   <div
-    class="h-full flex flex-col items-center justify-center p-8 text-white bg-gradient-to-br from-sky-600 to-sky-800">
-    <div class="flex h-full items-center  text-[14rem] font-medium leading-none font-display -translate-y-4">
+    class="h-full flex flex-col items-center justify-center p-8 text-white shadow-2xl rounded-lg  bg-gradient-to-br from-sky-600 to-sky-800">
+
+    <div class="flex h-full items-center text-[14rem] font-medium leading-none font-display -mt-10">
       {{ letter.letter }}
     </div>
 
-    <div class="space-y-8 w-full">
+    <div class="space-y-8 w-full -mt-20">
       <div class="flex justify-center">
         <div class="w-full max-w-2xl">
 
@@ -142,7 +134,8 @@ const handleAnswer = (letter) => {
             <div class="flex items-baseline gap-4">
               <p class="text-4xl font-display">{{ letter.example.greek }}</p>
               <button @click="playExample" :disabled="isPlaying"
-                class="p-3 flex aspect-square rounded-full bg-sky-500/20 hover:bg-sky-500/30 transition-colors disabled:opacity-50 disabled:cursor-not-allowed" aria-label="Play example audio">
+                class="p-3 flex aspect-square rounded-full bg-sky-500/20 hover:bg-sky-500/30 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                aria-label="Play example audio">
                 <Icon name="tabler:volume" size="24" />
               </button>
             </div>

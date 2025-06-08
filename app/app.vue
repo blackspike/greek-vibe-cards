@@ -3,10 +3,13 @@ import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/css';
 import { greekAlphabet } from './data/greekAlphabet';
 import { ref, onMounted } from 'vue';
+import { useRoute } from 'vue-router';
 
 // Create a ref for the shuffled alphabet
 const shuffledAlphabet = ref([]);
 const swiperInstance = ref(null);
+
+const route = useRoute();
 
 // Function to shuffle array
 const shuffleArray = (array) => {
@@ -40,18 +43,36 @@ onMounted(() => {
 </script>
 
 <template>
-  <main class="bg-sky-900 h-dvh p-1 font-sans flex justify-center items-center overflow-hidden">
-    <div class="max-w-[90vw] sm:max-w-md m-auto h-full flex flex-col max-h-[90dvh]">
-      <h1 class="sr-only text-4xl font-bold text-center text-white mb-8">Greek Alphabet Flashcards</h1>
+  <main class="bg-sky-900 h-dvh p-1 py-4 font-sans flex justify-center items-center ">
 
-      <div class="flex-1 rounded-xl shadow-2xl bg-sky-700 overflow-hidden">
-        <Swiper :slides-per-view="1" :space-between="30" :loop="true" :allow-touch-move="false" class="h-full"
-          @swiper="swiperInstance = $event" :speed="500">
-          <SwiperSlide v-for="letter in shuffledAlphabet" :key="letter.letter">
-            <Flashcard :letter="letter" @answer="handleAnswer" @next="nextSlide" />
-          </SwiperSlide>
-        </Swiper>
+    <!-- Page Content -->
+
+    <div class="max-w-[90vw] sm:max-w-md m-auto h-full flex flex-col max-h-[90dvh] w-full">
+
+      <!-- Navigation -->
+      <header class="pb-4">
+        <nav class="flex justify-between items-center">
+          <NuxtLink to="/" class="flex items-center gap-2 text-white hover:text-sky-300 transition-colors">
+            <img src="/favicon.svg" alt="Greek VibeCards" class="w-8 h-8" />
+          </NuxtLink>
+
+          <NuxtLink :to="route.path === '/settings' ? '/' : '/settings'"
+            class="text-white hover:text-sky-300 transition-colors">
+            <Icon :name="route.path === '/settings' ? 'tabler:arrow-left' : 'tabler:settings'" size="24" />
+          </NuxtLink>
+        </nav>
+      </header>
+
+      <div class="h-full">
+        <NuxtPage />
       </div>
+
     </div>
   </main>
 </template>
+
+<style>
+.router-link-active {
+  color: rgb(125 211 252) !important;
+}
+</style>
