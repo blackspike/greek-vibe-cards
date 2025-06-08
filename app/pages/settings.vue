@@ -3,6 +3,7 @@ import { ref, onMounted, computed } from 'vue';
 import { greekAlphabet } from '../data/greekAlphabet';
 
 const failedLetters = ref({});
+const highScore = ref(0);
 
 // Function to get letter details by Greek letter
 const getLetterDetails = (greekLetter) => {
@@ -15,6 +16,11 @@ const loadFailedLetters = () => {
   if (stored) {
     failedLetters.value = JSON.parse(stored);
   }
+};
+
+// Load high score from localStorage
+const loadHighScore = () => {
+  highScore.value = parseInt(localStorage.getItem('highScore') || '0');
 };
 
 // Function to remove a letter from failed letters
@@ -38,12 +44,22 @@ const sortedFailedLetters = computed(() => {
 
 onMounted(() => {
   loadFailedLetters();
+  loadHighScore();
 });
 </script>
 
 <template>
-  <div class="bg-sky-600/50 py-8 px-4 rounded-2xl h-full max-h-[80dvh] flex flex-col">
+  <div class="bg-sky-600/50 py-8 px-4 rounded-2xl h-full max-h-[80dvh] flex flex-col gap-8">
     <h1 class="text-3xl font-bold text-white text-center">Practice Stats</h1>
+
+    <!-- High Score Section -->
+    <div class="bg-sky-500/20 rounded-lg p-5 py-4">
+      <div class="flex items-baseline justify-between text-xl font-semibold text-sky-200">
+        <h2>High Score</h2>
+        <div class="text-right text-white">{{ highScore }}
+        </div>
+      </div>
+    </div>
 
     <div v-if="sortedFailedLetters.length > 0" class="flex-1 min-h-0">
       <div class="h-full flex flex-col">

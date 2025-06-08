@@ -7,6 +7,15 @@ import { ref, onMounted } from 'vue';
 // Create a ref for the shuffled alphabet
 const shuffledAlphabet = ref([]);
 const swiperInstance = ref(null);
+const correctStreak = ref(0);
+
+// Function to update high score
+const updateHighScore = (currentStreak) => {
+  const currentHighScore = parseInt(localStorage.getItem('highScore') || '0');
+  if (currentStreak > currentHighScore) {
+    localStorage.setItem('highScore', currentStreak.toString());
+  }
+};
 
 // Function to shuffle array
 const shuffleArray = (array) => {
@@ -20,9 +29,10 @@ const shuffleArray = (array) => {
 // Handle answer from flashcard
 const handleAnswer = ({ correct, letter }) => {
   if (correct) {
-    // Already handled in the Flashcard component
+    correctStreak.value++; // Increment streak on correct answer
+    updateHighScore(correctStreak.value); // Update high score if needed
   } else {
-    // Already handled in the Flashcard component
+    correctStreak.value = 0; // Reset streak on wrong answer
   }
 };
 
@@ -40,11 +50,42 @@ onMounted(() => {
 </script>
 
 <template>
-        <Swiper :slides-per-view="1" :space-between="30" :loop="true" :allow-touch-move="false" class="h-full"
-          @swiper="swiperInstance = $event" :speed="500">
-          <SwiperSlide v-for="letter in shuffledAlphabet" :key="letter.letter">
-            <Flashcard :letter="letter" @answer="handleAnswer" @next="nextSlide" />
-          </SwiperSlide>
-        </Swiper>
+  <div class="h-full relative">
+    <!-- Score Counter -->
+    <div v-if="correctStreak > 0"
+      class="absolute top-4 right-4 bg-sky-500/20 px-4 py-2 rounded-lg font-bold text-sky-200 backdrop-blur-sm z-10">
+      <transition name="bounce" mode="out-in">
+        <span :key="correctStreak" class="block text-2xl">{{ correctStreak }}</span>
+      </transition>
+    </div>
 
+    <Swiper :slides-per-view="1" :space-between="30" :loop="true" :allow-touch-move="false" class="h-full"
+      @swiper="swiperInstance = $event" :speed="500">
+      <SwiperSlide v-for="letter in shuffledAlphabet" :key="letter.letter">
+        <Flashcard :letter="letter" @answer="handleAnswer" @next="nextSlide" />
+      </SwiperSlide>
+    </Swiper>
+  </div>
 </template>
+
+<style scoped>
+.bounce-enter-active {
+  animation: bounce-in 0.3s ease-out;
+}
+
+.bounce-leave-active {
+  animation: bounce-in 0.3s ease-in reverse;
+}
+
+@keyframes bounce-in {
+  0% {
+    transform: scale(0.3);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+</style>
