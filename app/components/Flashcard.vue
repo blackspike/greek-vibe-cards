@@ -98,7 +98,7 @@ const handleAnswer = (letter) => {
 
 <template>
   <div
-    class="h-full flex flex-col items-center justify-center p-8 text-white shadow-2xl rounded-lg  bg-gradient-to-br from-sky-600 to-sky-800">
+    class="h-full flex flex-col items-center justify-center p-6 text-white shadow-2xl rounded-lg bg-gradient-to-br from-sky-600 to-sky-800">
 
     <div class="flex h-full items-center text-[14rem] font-medium leading-none font-display -mt-10">
       {{ letter.letter }}
@@ -117,6 +117,10 @@ const handleAnswer = (letter) => {
               ]">
               {{ equiv.toUpperCase() }}
             </button>
+            <NuxtLink to="/numbers"
+              class="text-xl border-2 rounded-lg p-1 transition-all duration-300 font-semibold bg-sky-500/20 border-sky-500/10 hover:bg-sky-500/30 flex items-center justify-center">
+              <Icon name="tabler:calculator" size="24" />
+            </NuxtLink>
           </div>
         </div>
       </div>

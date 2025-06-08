@@ -50,16 +50,30 @@ onMounted(() => {
     <div class="max-w-[90vw] sm:max-w-md m-auto h-full flex flex-col max-h-[90dvh] w-full">
 
       <!-- Navigation -->
-      <header class="pb-4">
+      <header class="pb-1">
         <nav class="flex justify-between items-center">
           <NuxtLink to="/" class="flex items-center gap-2 text-white hover:text-sky-300 transition-colors">
             <img src="/favicon.svg" alt="Greek VibeCards" class="w-8 h-8" />
           </NuxtLink>
 
-          <NuxtLink :to="route.path === '/settings' ? '/' : '/settings'"
-            class="text-white hover:text-sky-300 transition-colors">
-            <Icon :name="route.path === '/settings' ? 'tabler:arrow-left' : 'tabler:settings'" size="24" />
-          </NuxtLink>
+          <div class="flex items-center gap-4">
+            <NuxtLink to="/numbers"
+              class="text-white hover:text-sky-300 transition-colors p-2 rounded-lg hover:bg-sky-500/10"
+              aria-label="Switch to Numbers Quiz">
+              <Icon name="tabler:calculator" size="24" />
+            </NuxtLink>
+
+            <NuxtLink to="/"
+              class="text-white hover:text-sky-300 transition-colors p-2 rounded-lg hover:bg-sky-500/10"
+              aria-label="Switch to Greek Alphabet Quiz">
+              <Icon name="tabler:alphabet-greek" size="24" />
+            </NuxtLink>
+
+            <NuxtLink :to="route.path === '/settings' ? '/' : '/settings'"
+              class="text-white hover:text-sky-300 transition-colors p-2 rounded-lg hover:bg-sky-500/10">
+              <Icon :name="route.path === '/settings' ? 'tabler:arrow-left' : 'tabler:settings'" size="24" />
+            </NuxtLink>
+          </div>
         </nav>
       </header>
 
