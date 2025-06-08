@@ -98,7 +98,7 @@ const handleSubmit = () => {
     class="h-full flex flex-col items-center justify-center p-6 text-white shadow-2xl rounded-lg bg-gradient-to-br from-sky-600 to-sky-800">
 
     <div class="flex flex-col items-center mb-8 w-full">
-      <div class="text-6xl font-medium font-display mb-4">
+      <div class="text-6xl font-medium font-sans mb-8">
         {{ number.greek }}
       </div>
       <div class="text-2xl font-medium bg-sky-500/20 rounded-lg px-4 py-4 w-full max-w-xs text-center relative">
@@ -135,17 +135,17 @@ const handleSubmit = () => {
         <button @click="handleHint"
           class="text-xl p-2 rounded-lg bg-sky-500/20 border-2 border-sky-500/10 hover:bg-sky-500/30 transition-all font-semibold flex items-center justify-center"
           aria-label="Show answer">
-          <Icon name="tabler:question-mark" size="38" />
+          <Icon name="tabler:question-circle" size="38" />
         </button>
         <button @click="handleDigit('0')"
           class="text-2xl p-2 rounded-lg bg-sky-500/20 border-2 border-sky-500/10 hover:bg-sky-500/30 transition-all font-semibold">
           0
         </button>
-        <nuxt-link to="/"
+        <button @click="handleBackspace"
           class="text-xl p-2 rounded-lg bg-sky-500/20 border-2 border-sky-500/10 hover:bg-sky-500/30 transition-all font-semibold flex items-center justify-center"
-          aria-label="Switch to Greek Alphabet Quiz">
-          <Icon name="tabler:alphabet-greek" size="38" />
-        </nuxt-link>
+          aria-label="Delete last digit">
+          <Icon name="tabler:backspace" size="38" />
+        </button>
 
         <!-- Enter Button -->
         <button @click="handleSubmit"
