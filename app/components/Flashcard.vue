@@ -125,7 +125,8 @@ const handleAnswer = (letter) => {
 
       <div class="w-full">
         <details class="group">
-          <summary class="text-xl font-semibold text-sky-300 cursor-pointer hover:text-sky-200 flex justify-center items-center gap-2">
+          <summary
+            class="text-sm tracking-widest text-sky-300 uppercase font-bold cursor-pointer hover:text-sky-200 flex justify-center items-center gap-2">
             <Icon name="tabler:chevron-down" size="24"
               class="flex-shrink-0 rotate-180 group-open:rotate-0 transition-transform" />
             Hint
