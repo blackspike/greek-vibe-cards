@@ -49,8 +49,10 @@ onMounted(() => {
       <!-- Navigation -->
       <header class="pb-1">
         <nav class="flex justify-between items-center">
-          <NuxtLink to="/" class="flex items-center gap-2 text-white hover:text-sky-300 transition-colors">
-            <img src="/favicon.svg" alt="Greek VibeCards" class="w-8 h-8" />
+          <NuxtLink to="/" class="flex items-center gap-3 text-white hover:text-sky-300 transition-colors">
+            <img src="/favicon.svg" alt="Greek VibeCards" class="w-6 h-6" />
+
+            <span class="text-xs tracking-widest text-sky-300 uppercase font-bold">Learn greek or die</span>
           </NuxtLink>
 
           <div class="flex items-center gap-4">
