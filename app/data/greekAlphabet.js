@@ -250,5 +250,68 @@ export const greekAlphabet = [
       greek: 'ωραίος',
       english: 'beautiful'
     }
+  },
+  {
+    letter: 'μ',
+    name: 'Mu',
+    equivalent: 'm',
+    example: {
+      greek: 'μιάμ',
+      english: 'yum'
+    }
+  },
+  {
+    letter: 'ν',
+    name: 'Nu',
+    equivalent: 'n',
+    example: {
+      greek: 'νερό',
+      english: 'water'
+    }
+  },
+  {
+    letter: 'ι',
+    name: 'Iota',
+    equivalent: 'i',
+    example: {
+      greek: 'ιστορία',
+      english: 'history'
+    }
+  },
+  {
+    letter: 'τ',
+    name: 'Tau',
+    equivalent: 't',
+    example: {
+      greek: 'τραπέζι',
+      english: 'table'
+    }
+  },
+  {
+    letter: 'Π',
+    name: 'Pi',
+    equivalent: 'p',
+    example: {
+      greek: 'Πόλη',
+      english: 'City'
+    }
+  },
+  {
+    letter: 'π',
+    name: 'Pi',
+    equivalent: 'p',
+    example: {
+      greek: 'πόλη',
+      english: 'city'
+    }
+  },
+  {
+    letter: 'ζ',
+    name: 'Zeta',
+    equivalent: 'z',
+    example: {
+      greek: 'ζωή',
+      english: 'life'
+    }
   }
 ];

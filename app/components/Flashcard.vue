@@ -15,10 +15,11 @@ const isAnswered = ref(false);
 const showOutline = ref(false);
 const incorrectButton = ref(null);
 const isPlaying = ref(false);
+const isDetailsOpen = ref(false);
 
 // Get unique equivalents from the Greek alphabet and sort them alphabetically
 const uniqueEquivalents = [
-  'ch', 'd', 'f', 'g', 'i', 'l', 'o', 'ps', 'r', 's', 'th', 'v', 'x', 'y'
+  'ch', 'd', 'f', 'g', 'i', 'l', 'm', 'n', 'o', 'p', 'ps', 'r', 's', 't', 'th', 'v', 'x', 'y', 'z'
 ].sort();
 
 const updateFailedLetters = (letter, isCorrect) => {
@@ -107,7 +108,7 @@ const handleAnswer = (letter) => {
 <template>
   <div
     class="h-full flex flex-col items-center justify-center p-8 text-white bg-gradient-to-br from-sky-600 to-sky-800">
-    <div style="text-trim-block: both;" class="flex h-full items-center font-sans text-[14rem] font-medium leading-none">
+    <div class="flex h-full items-center  text-[14rem] font-medium leading-none font-display">
       {{ letter.letter }}
     </div>
 
@@ -129,19 +130,53 @@ const handleAnswer = (letter) => {
       </div>
 
       <div class="w-full">
-        <h3 class="text-xl font-semibold mb-2 text-sky-300">
-          Example - <span class="text-sky-200">{{ letter.example.english }}</span>
-        </h3>
-        <div class="flex items-end gap-4">
-          <p class="text-6xl font-display">
-            {{ letter.example.greek }}
-          </p>
-          <button @click="playExample" :disabled="isPlaying"
-            class="p-3 flex aspect-square rounded-full bg-sky-500/20 hover:bg-sky-500/30 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
-            <Icon name="tabler:volume" size="24" />
-          </button>
-        </div>
+        <details class="group" @toggle="isDetailsOpen = $event.target.open">
+          <summary class="text-xl font-semibold text-sky-300 cursor-pointer hover:text-sky-200 flex items-center gap-2">
+            <Icon :name="isDetailsOpen ? 'tabler:chevron-down' : 'tabler:chevron-up'" size="24" class="flex-shrink-0" />
+            Hint
+          </summary>
+          <div class="flex items-baseline justify-between mt-4">
+            <div class="flex items-baseline gap-2">
+              <p class="text-xl text-sky-200">{{ letter.example.english }}</p>
+            </div>
+            <div class="flex items-baseline gap-4">
+              <p class="text-4xl font-display">{{ letter.example.greek }}</p>
+              <button @click="playExample" :disabled="isPlaying"
+                class="p-3 flex aspect-square rounded-full bg-sky-500/20 hover:bg-sky-500/30 transition-colors disabled:opacity-50 disabled:cursor-not-allowed" aria-label="Play example audio">
+                <Icon name="tabler:volume" size="24" />
+              </button>
+            </div>
+          </div>
+        </details>
       </div>
     </div>
   </div>
 </template>
+
+<style scoped>
+summary {
+  list-style: none;
+
+  &::-webkit-details-marker {
+    display: none;
+  }
+}
+
+details {
+  @media (prefers-reduced-motion: no-preference) {
+    interpolate-size: allow-keywords;
+  }
+
+  &::details-content {
+    block-size: 0;
+    opacity: 0;
+    overflow-y: clip;
+    transition: content-visibility .2s allow-discrete, opacity .2s, block-size .2s ease-out;
+  }
+
+  &[open]::details-content {
+    block-size: auto;
+    opacity: 1;
+  }
+}
+</style>
