@@ -92,12 +92,6 @@ const handleAnswer = (letter) => {
   <div
     class="h-full flex flex-col items-center justify-center p-6 text-white shadow-2xl rounded-2xl bg-gradient-to-br from-sky-600 to-sky-800 relative">
 
-    <!-- Score Counter -->
-    <div v-if="correctStreak > 0"
-      class="absolute top-4 right-4 bg-sky-500/20 px-3 py-1.5 rounded-lg font-medium text-sky-200 backdrop-blur-sm">
-      {{ correctStreak }}
-    </div>
-
     <div class="flex h-full items-center text-[14rem] font-medium leading-none font-display -mt-10">
       {{ letter.letter }}
     </div>

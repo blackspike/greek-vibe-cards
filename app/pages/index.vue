@@ -28,40 +28,25 @@ const shuffleArray = (array) => {
 
 // Function to trigger confetti
 const celebrate = () => {
-  // Define our color palette
-  const colors = [
-    '#bae0ff', // sky-200
-    '#7cc5ff', // sky-300
-    '#36a5ff', // sky-400
-    '#0084ff', // sky-500
-    '#0052b4'  // sky-600
-  ];
-
-  // Regular milestone celebration
   confetti({
     particleCount: 100,
     spread: 70,
-    origin: { y: 0.7 },
-    colors: colors,
-    decay: 0.8,
-    gravity: 2,
-    ticks: 100
+    origin: { y: 0.6 },
+    colors: ['#0ea5e9', '#7dd3fc', '#e0f2fe'],
+    ticks: 200
   });
-};
-
-// Function to update high score
-const updateHighScore = (currentStreak) => {
-  if (currentStreak > currentHighScore.value) {
-    localStorage.setItem('highScore', currentStreak.toString());
-    currentHighScore.value = currentStreak;
-  }
 };
 
 // Handle answer from flashcard
 const handleAnswer = ({ correct, letter }) => {
   if (correct) {
     correctStreak.value++; // Increment streak on correct answer
-    updateHighScore(correctStreak.value); // Update high score if needed
+
+    // Update high score if current streak is higher
+    if (correctStreak.value > currentHighScore.value) {
+      currentHighScore.value = correctStreak.value;
+      localStorage.setItem('highScore', correctStreak.value.toString());
+    }
 
     // Celebrate every 5 correct answers
     if (correctStreak.value > 0 && correctStreak.value % 5 === 0) {
@@ -85,8 +70,8 @@ const nextSlide = () => {
     <!-- Score Counter -->
     <div v-if="correctStreak > 0"
       :class="[
-        'absolute top-4 right-4 px-4 py-2 rounded-lg font-bold backdrop-blur-sm z-10 transition-colors duration-300',
-        correctStreak > currentHighScore ? 'bg-amber-500/30 text-amber-200' : 'bg-sky-500/20 text-sky-200'
+        'absolute top-4 right-4 px-4 py-2 rounded-lg font-bold backdrop-blur-sm z-10 transition-all duration-300 bg-sky-500/20 text-sky-200',
+        correctStreak >= currentHighScore ? 'ring-2 ring-amber-400' : ''
       ]">
       <transition name="bounce" mode="out-in">
         <span :key="correctStreak" class="block text-2xl">{{ correctStreak }}</span>
