@@ -57,19 +57,12 @@ const handleAnswer = (letter) => {
     // Update failed letters count
     updateFailedLetters(props.letter.letter, true);
 
-    // Hide outline after 500ms
-    setTimeout(() => {
-      showOutline.value = false;
-    }, 300);
-
-    // Move to next slide after 500ms
-    setTimeout(() => {
-      emit('next');
-      // Reset state for next slide
-      isCorrect.value = null;
-      isAnswered.value = false;
-      incorrectButton.value = null;
-    }, 300);
+    // Move to next slide immediately
+    emit('next');
+    // Reset state for next slide
+    isCorrect.value = null;
+    isAnswered.value = false;
+    incorrectButton.value = null;
   } else {
     isCorrect.value = false;
     isAnswered.value = true;
