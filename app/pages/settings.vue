@@ -42,7 +42,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="bg-sky-600/50 py-8 px-4 rounded-4xl h-full max-h-[80dvh] flex flex-col">
+  <div class="bg-sky-600/50 py-8 px-4 rounded-2xl h-full max-h-[80dvh] flex flex-col">
     <h1 class="text-3xl font-bold text-white text-center">Practice Stats</h1>
 
     <div v-if="sortedFailedLetters.length > 0" class="flex-1 min-h-0">
