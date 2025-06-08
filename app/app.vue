@@ -43,11 +43,11 @@ onMounted(() => {
 </script>
 
 <template>
-  <main class="bg-sky-900 h-dvh p-1 py-4 font-sans flex justify-center items-center ">
+  <main class="bg-sky-900 h-dvh p-1 py-2 font-sans flex justify-center items-center ">
 
     <!-- Page Content -->
 
-    <div class="max-w-[90vw] sm:max-w-md m-auto h-full flex flex-col max-h-[90dvh] w-full">
+    <div class="max-w-[90vw] sm:max-w-md m-auto h-full flex flex-col max-h-[94dvh] w-full">
 
       <!-- Navigation -->
       <header class="pb-1">

@@ -104,7 +104,7 @@ const handleAnswer = (letter) => {
       {{ letter.letter }}
     </div>
 
-    <div class="space-y-8 w-full -mt-20">
+    <div class="space-y-8 w-full -mt-10">
       <div class="flex justify-center">
         <div class="w-full max-w-2xl">
 

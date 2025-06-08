@@ -115,34 +115,34 @@ const handleSubmit = () => {
       <div class="grid grid-cols-3 gap-2">
         <!-- Numbers 7-9 -->
         <button v-for="n in ['7', '8', '9']" :key="n" @click="handleDigit(n)"
-          class="text-2xl p-4 rounded-lg bg-sky-500/20 border-2 border-sky-500/10 hover:bg-sky-500/30 transition-all font-semibold">
+          class="text-2xl p-2 rounded-lg bg-sky-500/20 border-2 border-sky-500/10 hover:bg-sky-500/30 transition-all font-semibold">
           {{ n }}
         </button>
 
         <!-- Numbers 4-6 -->
         <button v-for="n in ['4', '5', '6']" :key="n" @click="handleDigit(n)"
-          class="text-2xl p-4 rounded-lg bg-sky-500/20 border-2 border-sky-500/10 hover:bg-sky-500/30 transition-all font-semibold">
+          class="text-2xl p-2 rounded-lg bg-sky-500/20 border-2 border-sky-500/10 hover:bg-sky-500/30 transition-all font-semibold">
           {{ n }}
         </button>
 
         <!-- Numbers 1-3 -->
         <button v-for="n in ['1', '2', '3']" :key="n" @click="handleDigit(n)"
-          class="text-2xl p-4 rounded-lg bg-sky-500/20 border-2 border-sky-500/10 hover:bg-sky-500/30 transition-all font-semibold">
+          class="text-2xl p-2 rounded-lg bg-sky-500/20 border-2 border-sky-500/10 hover:bg-sky-500/30 transition-all font-semibold">
           {{ n }}
         </button>
 
         <!-- Zero and Control Buttons -->
         <button @click="handleHint"
-          class="text-xl p-4 rounded-lg bg-sky-500/20 border-2 border-sky-500/10 hover:bg-sky-500/30 transition-all font-semibold flex items-center justify-center"
+          class="text-xl p-2 rounded-lg bg-sky-500/20 border-2 border-sky-500/10 hover:bg-sky-500/30 transition-all font-semibold flex items-center justify-center"
           aria-label="Show answer">
           <Icon name="tabler:question-mark" size="38" />
         </button>
         <button @click="handleDigit('0')"
-          class="text-2xl p-4 rounded-lg bg-sky-500/20 border-2 border-sky-500/10 hover:bg-sky-500/30 transition-all font-semibold">
+          class="text-2xl p-2 rounded-lg bg-sky-500/20 border-2 border-sky-500/10 hover:bg-sky-500/30 transition-all font-semibold">
           0
         </button>
         <nuxt-link to="/"
-          class="text-xl p-4 rounded-lg bg-sky-500/20 border-2 border-sky-500/10 hover:bg-sky-500/30 transition-all font-semibold flex items-center justify-center"
+          class="text-xl p-2 rounded-lg bg-sky-500/20 border-2 border-sky-500/10 hover:bg-sky-500/30 transition-all font-semibold flex items-center justify-center"
           aria-label="Switch to Greek Alphabet Quiz">
           <Icon name="tabler:alphabet-greek" size="38" />
         </nuxt-link>
