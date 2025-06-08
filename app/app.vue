@@ -55,7 +55,7 @@ onMounted(() => {
             <span class="text-xs tracking-widest text-sky-300 uppercase font-bold">Learn greek or die</span>
           </NuxtLink>
 
-          <div class="flex items-center gap-4">
+          <div class="flex items-center gap-2">
 
             <NuxtLink to="/" class="text-white hover:text-sky-300 transition-colors p-2 rounded-lg hover:bg-sky-500/10"
               aria-label="Switch to Greek Alphabet Quiz">
