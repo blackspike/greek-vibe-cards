@@ -15,7 +15,6 @@ const isAnswered = ref(false);
 const showOutline = ref(false);
 const incorrectButton = ref(null);
 const isPlaying = ref(false);
-const isDetailsOpen = ref(false);
 
 // Get unique equivalents from the Greek alphabet and sort them alphabetically
 const uniqueEquivalents = [
@@ -126,9 +125,9 @@ const handleAnswer = (letter) => {
       </div>
 
       <div class="w-full">
-        <details class="group" @toggle="isDetailsOpen = $event.target.open">
+        <details class="group">
           <summary class="text-xl font-semibold text-sky-300 cursor-pointer hover:text-sky-200 flex items-center gap-2">
-            <Icon :name="isDetailsOpen ? 'tabler:chevron-down' : 'tabler:chevron-up'" size="24" class="flex-shrink-0" />
+            <Icon name="tabler:chevron-down" size="24" class="flex-shrink-0 group-open:rotate-180 transition-transform" />
             Hint
           </summary>
           <div class="flex items-baseline justify-between mt-4">
