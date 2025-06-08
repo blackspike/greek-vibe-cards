@@ -105,12 +105,12 @@ const handleAnswer = (letter) => {
                 'text-xl border-2 rounded-lg p-1 transition-all duration-300 font-semibold',
                 showOutline && isCorrect && equiv === letter.equivalent ? '!bg-green-500/40 border-green-500 ring-4 ring-green-500/50' : '',
                 showOutline && !isCorrect && equiv === incorrectButton ? '!bg-red-500/40 border-red-500 ring-4 ring-red-500/50' : '',
-                'bg-sky-500/20 border-sky-500/10 hover:bg-sky-500/30'
+                'bg-sky-500/20 border-sky-500/10 hover:bg-sky-500/30 active:scale-95'
               ]">
               {{ equiv.toUpperCase() }}
             </button>
             <NuxtLink to="/numbers"
-              class="text-xl border-2 rounded-lg p-1 transition-all duration-300 font-semibold bg-sky-500/20 border-sky-500/10 hover:bg-sky-500/30 flex items-center justify-center">
+              class="text-xl border-2 rounded-lg p-1 transition-all duration-300 font-semibold bg-sky-500/20 border-sky-500/10 hover:bg-sky-500/30 active:scale-95 flex items-center justify-center">
               <Icon name="tabler:calculator" size="24" />
             </NuxtLink>
           </div>
