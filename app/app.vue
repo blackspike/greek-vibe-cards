@@ -43,10 +43,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <main class="bg-sky-900 h-dvh p-1 py-2 font-sans flex justify-center items-center ">
-
-    <!-- Page Content -->
-
+  <main class="bg-sky-900 h-dvh p-1 py-2 font-sans flex justify-center items-center">
     <div class="max-w-[90vw] sm:max-w-md m-auto h-full flex flex-col max-h-[94dvh] w-full">
 
       <!-- Navigation -->
