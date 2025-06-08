@@ -41,13 +41,12 @@ onMounted(() => {
 
 <template>
   <main class="bg-sky-900 h-dvh p-1 font-sans flex justify-center items-center overflow-hidden">
-
     <div class="max-w-[90vw] sm:max-w-md m-auto h-full flex flex-col max-h-[90dvh]">
       <h1 class="sr-only text-4xl font-bold text-center text-white mb-8">Greek Alphabet Flashcards</h1>
 
       <div class="flex-1 rounded-xl shadow-2xl bg-sky-700 overflow-hidden">
         <Swiper :slides-per-view="1" :space-between="30" :loop="true" :allow-touch-move="false" class="h-full"
-          @swiper="swiperInstance = $event">
+          @swiper="swiperInstance = $event" :speed="500">
           <SwiperSlide v-for="letter in shuffledAlphabet" :key="letter.letter">
             <Flashcard :letter="letter" @answer="handleAnswer" @next="nextSlide" />
           </SwiperSlide>

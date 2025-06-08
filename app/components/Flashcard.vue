@@ -108,7 +108,7 @@ const handleAnswer = (letter) => {
 <template>
   <div
     class="h-full flex flex-col items-center justify-center p-8 text-white bg-gradient-to-br from-sky-600 to-sky-800">
-    <div class="flex h-full items-center  text-[14rem] font-medium leading-none font-display">
+    <div class="flex h-full items-center  text-[14rem] font-medium leading-none font-display -translate-y-4">
       {{ letter.letter }}
     </div>
 
