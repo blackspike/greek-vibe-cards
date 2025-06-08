@@ -1,7 +1,7 @@
 {
   "name": "Greek VibeCards",
   "short_name": "VibeCards",
-  "description": "A vibe-coded flashcard app for learning the Greek alphabet",
+  "description": "LEARN GREEK OR DIE: A vibe-coded flashcard app for learning the Greek alphabet and numbers",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#003365",
