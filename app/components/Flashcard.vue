@@ -111,7 +111,7 @@ const handleAnswer = (letter) => {
             </button>
             <NuxtLink to="/numbers"
               class="text-xl border-2 rounded-lg p-1 transition-all duration-300 font-semibold bg-sky-500/20 border-sky-500/10 hover:bg-sky-500/30 active:scale-95 flex items-center justify-center">
-              <Icon name="tabler:calculator" size="24" />
+              <Icon name="tabler:numbers" size="24" />
             </NuxtLink>
           </div>
         </div>

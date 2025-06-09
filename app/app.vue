@@ -65,7 +65,7 @@ onMounted(() => {
             <NuxtLink to="/numbers"
               class="text-white hover:text-sky-300 transition-colors p-2 rounded-lg hover:bg-sky-500/10"
               aria-label="Switch to Numbers Quiz">
-              <Icon name="tabler:calculator" size="24" />
+              <Icon name="tabler:numbers" size="24" />
             </NuxtLink>
 
             <NuxtLink :to="route.path === '/settings' ? '/' : '/settings'"
