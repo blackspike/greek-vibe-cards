@@ -142,7 +142,7 @@ const handleAnswer = (letter) => {
             </button>
             <NuxtLink to="/numbers"
               class="btn">
-              <Icon name="tabler:numbers" size="24" />
+              <Icon name="bs-icon:numbers" size="24" />
             </NuxtLink>
           </div>
         </div>
@@ -152,7 +152,7 @@ const handleAnswer = (letter) => {
         <details class="group">
           <summary
             class="text-sm tracking-widest text-sky-300 uppercase font-bold cursor-pointer hover:text-sky-200 flex justify-center items-center gap-2">
-            <Icon name="tabler:chevron-down" size="24"
+            <Icon name="bs-icon:chevron-down" size="24"
               class="flex-shrink-0 rotate-180 group-open:rotate-0 transition-transform" />
             Hint
           </summary>
@@ -165,7 +165,7 @@ const handleAnswer = (letter) => {
               <button @click="playExample" :disabled="isPlaying"
                 class="btn aspect-square !rounded-full !p-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 aria-label="Play example audio">
-                <Icon name="tabler:volume" size="24" />
+                <Icon name="bs-icon:volume" size="24" />
               </button>
             </div>
           </div>

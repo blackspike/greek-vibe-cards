@@ -48,6 +48,15 @@ export default defineNuxtConfig({
     domain: 'vibecards.blackspike.com',
     ignoredHostnames: ['localhost'],
   },
+  icon: {
+    customCollections: [
+      {
+        prefix: 'bs-icon',
+        dir: './app/assets/icons'
+      },
+    ],
+  },
+
   vite: {
     plugins: [
       tailwindcss(),

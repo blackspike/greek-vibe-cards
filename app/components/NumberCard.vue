@@ -130,13 +130,13 @@ const handleSubmit = () => {
 
         <!-- Zero and Control Buttons -->
         <button @click="handleHint" class="btn" aria-label="Show answer">
-          <Icon name="tabler:question-circle" size="32" />
+          <Icon name="bs-icon:question-circle" size="32" />
         </button>
         <button @click="handleDigit('0')" class="btn">
           0
         </button>
         <button @click="handleBackspace" class="btn" aria-label="Delete last digit">
-          <Icon name="tabler:backspace" size="32" />
+          <Icon name="bs-icon:backspace" size="32" />
         </button>
 
         <!-- Enter Button -->

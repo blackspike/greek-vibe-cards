@@ -83,7 +83,7 @@ onMounted(() => {
               <button @click="removeLetter(item.letter)"
                 class="p-2 rounded-lg bg-sky-500/10 hover:bg-red-500 transition-colors group flex items-center justify-center"
                 aria-label="Remove from failed letters">
-                <Icon name="tabler:trash" size="24"
+                <Icon name="bs-icon:trash" size="24"
                   class="w-5 h-5 text-sky-200 group-hover:text-white transition-colors" />
               </button>
             </div>

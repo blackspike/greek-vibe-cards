@@ -56,18 +56,19 @@ onMounted(() => {
 
             <NuxtLink to="/" class="text-white hover:text-sky-300 transition-colors p-2 rounded-lg hover:bg-sky-500/10"
               aria-label="Switch to Greek Alphabet Quiz">
-              <Icon name="tabler:alphabet-greek" size="24" />
+              <Icon name="bs-icon:alphabet-greek" size="24" />
             </NuxtLink>
 
             <NuxtLink to="/numbers"
               class="text-white hover:text-sky-300 transition-colors p-2 rounded-lg hover:bg-sky-500/10"
               aria-label="Switch to Numbers Quiz">
-              <Icon name="tabler:numbers" size="24" />
+              <Icon name="bs-icon:numbers" size="24" />
             </NuxtLink>
 
-            <NuxtLink :to="route.path === '/settings' ? '/' : '/settings'"
+            <NuxtLink to="/settings"
+              aria-label="Settings"
               class="text-white hover:text-sky-300 transition-colors p-2 rounded-lg hover:bg-sky-500/10">
-              <Icon :name="route.path === '/settings' ? 'tabler:arrow-left' : 'tabler:settings'" size="24" />
+              <Icon name="bs-icon:settings" size="24" />
             </NuxtLink>
           </div>
         </nav>
