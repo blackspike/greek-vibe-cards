@@ -49,6 +49,7 @@ export default defineNuxtConfig({
     ignoredHostnames: ['localhost'],
   },
   icon: {
+    provider: 'none',
     customCollections: [
       {
         prefix: 'bs-icon',
