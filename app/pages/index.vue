@@ -1,8 +1,6 @@
 <script setup>
-import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/css';
 import { greekAlphabet } from '../data/greekAlphabet';
-import { ref, onMounted } from 'vue';
 import confetti from 'canvas-confetti';
 
 // Create a ref for the shuffled alphabet

@@ -1,8 +1,6 @@
 <script setup>
-import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/css';
 import { greekNumbers } from '../data/greekNumbers';
-import { ref, onMounted } from 'vue';
 
 // Create a ref for the shuffled numbers
 const shuffledNumbers = ref([]);

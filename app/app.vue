@@ -1,9 +1,6 @@
 <script setup>
-import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/css';
 import { greekAlphabet } from './data/greekAlphabet';
-import { ref, onMounted } from 'vue';
-import { useRoute } from 'vue-router';
 
 // Create a ref for the shuffled alphabet
 const shuffledAlphabet = ref([]);

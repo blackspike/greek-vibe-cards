@@ -71,18 +71,18 @@ onMounted(() => {
               <span class="text-4xl font-display text-white">{{ item.letter }}</span>
               <div class="text-sky-200">
                 <p class="font-medium">{{ item.details?.name }}</p>
-                <p class="text-sm opacity-75">Equivalent: {{ item.details?.equivalent.toUpperCase() }}</p>
+                <p class="text-sm opacity-75">{{ item.details?.equivalent.toUpperCase() }}</p>
               </div>
             </div>
             <div class="flex items-center gap-6">
-              <div class="text-right">
+              <div class="text-center">
                 <span class="font-medium text-sky-300">{{ item.count }}</span>
-                <p class="text-sm text-sky-200 opacity-75">mistakes</p>
+                <p class="text-sm text-sky-200 opacity-75">fails</p>
               </div>
               <button @click="removeLetter(item.letter)"
                 class="p-2 rounded-lg bg-sky-500/10 hover:bg-red-500 transition-colors group flex items-center justify-center"
                 aria-label="Remove from failed letters">
-                <Icon name="tabler:trash" size="32"
+                <Icon name="tabler:trash" size="24"
                   class="w-5 h-5 text-sky-200 group-hover:text-white transition-colors" />
               </button>
             </div>
