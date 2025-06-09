@@ -39,11 +39,12 @@ export default defineNuxtConfig({
       ]
     }
   },
-  fonts: {
-    provider: 'bunny'
+  pwa: {
+    /* PWA options */
   },
+
   css: ['~/assets/css/fonts.css','~/assets/css/global.css','~/assets/css/buttons.css'],
-  modules: ['@nuxt/icon', '@nuxt/image', '@nuxtjs/plausible'],
+  modules: ['@nuxt/icon', '@nuxt/image', '@nuxtjs/plausible', '@vite-pwa/nuxt'],
   plausible: {
     domain: 'vibecards.blackspike.com',
     ignoredHostnames: ['localhost'],
