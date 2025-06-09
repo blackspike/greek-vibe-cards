@@ -95,7 +95,7 @@ const handleSubmit = () => {
 
 <template>
   <div
-    class="h-full flex flex-col items-center justify-center p-6 text-white shadow-2xl rounded-2xl bg-gradient-to-br from-sky-600 to-sky-800">
+    class="h-full w-full flex flex-col items-center justify-center p-6 text-white shadow-2xl rounded-2xl bg-gradient-to-br from-sky-600 to-sky-800">
 
     <div class="flex flex-col items-center mb-8 w-full">
       <div class="text-5xl lg:text-6xl font-normal mb-8 text-center">

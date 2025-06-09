@@ -1,12 +1,11 @@
 <script setup>
-import 'swiper/css';
+import { ref, onMounted } from 'vue';
 import { greekNumbers } from '../data/greekNumbers';
 
-// Create a ref for the shuffled numbers
 const shuffledNumbers = ref([]);
-const swiperInstance = ref(null);
+const currentIndex = ref(0);
 
-// Function to shuffle array
+// Shuffle array function
 const shuffleArray = (array) => {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -15,25 +14,24 @@ const shuffleArray = (array) => {
   return array;
 };
 
-
-// Function to move to next slide
-const nextSlide = () => {
-  if (swiperInstance.value) {
-    swiperInstance.value.slideNext();
+// Move to next card
+const nextCard = () => {
+  if (currentIndex.value < shuffledNumbers.value.length - 1) {
+    currentIndex.value++;
   }
 };
 
-// Shuffle the numbers on component mount
+// Shuffle numbers on mount
 onMounted(() => {
   shuffledNumbers.value = shuffleArray([...greekNumbers]);
 });
 </script>
 
 <template>
-  <Swiper v-if="shuffledNumbers.length" :slides-per-view="1" :space-between="30" :loop="true" :allow-touch-move="false" class="h-full"
-    @swiper="swiperInstance = $event" :speed="500">
-    <SwiperSlide v-for="number in shuffledNumbers" :key="number.greek">
-      <NumberCard :number="number"  @next="nextSlide" />
-    </SwiperSlide>
-  </Swiper>
+  <div v-if="shuffledNumbers.length" class=" w-full h-full flex items-center justify-center">
+    <NumberCard
+      :number="shuffledNumbers[currentIndex]"
+      @next="nextCard"
+    />
+  </div>
 </template>
