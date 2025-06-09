@@ -40,7 +40,8 @@ export default defineNuxtConfig({
     }
   },
   pwa: {
-    /* PWA options */
+    strategies: 'generateSW',
+    registerType: 'autoUpdate',
   },
 
   css: ['~/assets/css/fonts.css','~/assets/css/global.css','~/assets/css/buttons.css'],
