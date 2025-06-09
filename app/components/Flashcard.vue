@@ -133,7 +133,7 @@ const handleAnswer = (letter) => {
 
           <div class="grid grid-cols-4 gap-2">
             <button v-for="equiv in uniqueEquivalents" :key="equiv" @click="handleAnswer(equiv)" :class="[
-                'text-xl border-2 rounded-lg p-1 transition-all duration-300 font-semibold',
+                'btn',
                 showOutline && isCorrect && equiv === letter.equivalent ? '!bg-green-500/40 border-green-500 ring-4 ring-green-500/50' : '',
                 showOutline && !isCorrect && equiv === incorrectButton ? '!bg-red-500/40 border-red-500 ring-4 ring-red-500/50' : '',
                 'bg-sky-500/20 border-sky-500/10 hover:bg-sky-500/30 active:scale-95'
@@ -141,7 +141,7 @@ const handleAnswer = (letter) => {
               {{ equiv.toUpperCase() }}
             </button>
             <NuxtLink to="/numbers"
-              class="text-xl border-2 rounded-lg p-1 transition-all duration-300 font-semibold bg-sky-500/20 border-sky-500/10 hover:bg-sky-500/30 active:scale-95 flex items-center justify-center">
+              class="btn">
               <Icon name="tabler:numbers" size="24" />
             </NuxtLink>
           </div>
@@ -163,7 +163,7 @@ const handleAnswer = (letter) => {
             <div class="flex items-baseline gap-4">
               <p class="text-4xl font-display">{{ letter.example.greek }}</p>
               <button @click="playExample" :disabled="isPlaying"
-                class="p-3 flex aspect-square rounded-full bg-sky-500/20 hover:bg-sky-500/30 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                class="btn aspect-square !rounded-full !p-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 aria-label="Play example audio">
                 <Icon name="tabler:volume" size="24" />
               </button>

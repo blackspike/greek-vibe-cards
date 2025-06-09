@@ -42,7 +42,7 @@ export default defineNuxtConfig({
   fonts: {
     provider: 'bunny'
   },
-  css: ['~/assets/css/fonts.css','~/assets/css/global.css'],
+  css: ['~/assets/css/fonts.css','~/assets/css/global.css','~/assets/css/buttons.css'],
   modules: ['@nuxt/icon', '@nuxt/image', '@nuxtjs/plausible'],
   plausible: {
     domain: 'vibecards.blackspike.com',
