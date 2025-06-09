@@ -97,7 +97,7 @@ const handleSubmit = () => {
   <div
     class="h-full w-full flex flex-col items-center justify-center p-6 text-white shadow-2xl rounded-2xl bg-gradient-to-br from-sky-600 to-sky-800">
 
-    <div class="flex flex-col items-center mb-8 w-full">
+    <div class="flex flex-col items-center mb-4 w-full">
       <div class="text-5xl lg:text-6xl font-normal mb-8 text-center">
         {{ number.greek }}
       </div>
@@ -140,7 +140,7 @@ const handleSubmit = () => {
         </button>
 
         <!-- Enter Button -->
-        <button @click="handleSubmit" class="btn col-span-3 !py-3" :class="{
+        <button @click="handleSubmit" class="btn col-span-3 !py-4 mt-2" :class="{
             '!bg-green-500/40 !border-green-500 ring-4 ring-green-500/50': showOutline && isCorrect,
             '!bg-red-500/40 !border-red-500 ring-4 ring-red-500/50': showOutline && !isCorrect
           }">
