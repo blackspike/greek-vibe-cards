@@ -76,7 +76,7 @@ const nextSlide = () => {
       </transition>
     </div>
 
-    <Swiper :slides-per-view="1" :space-between="30" :loop="true" :allow-touch-move="false" class="h-full"
+    <Swiper v-if="shuffledAlphabet.length" :slides-per-view="1" :space-between="30" :loop="true" :allow-touch-move="false" class="h-full"
       @swiper="swiperInstance = $event" :speed="500">
       <SwiperSlide v-for="letter in shuffledAlphabet" :key="letter.letter">
         <Flashcard :letter="letter" @answer="handleAnswer" @next="nextSlide" />

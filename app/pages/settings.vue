@@ -1,6 +1,7 @@
 <script setup>
 import { ref, onMounted, computed } from 'vue';
 import { greekAlphabet } from '../data/greekAlphabet';
+import { Virtual } from 'swiper/modules';
 
 const failedLetters = ref({});
 const highScore = ref(0);

@@ -15,14 +15,6 @@ const shuffleArray = (array) => {
   return array;
 };
 
-// Handle answer from number card
-const handleAnswer = ({ correct, number }) => {
-  if (correct) {
-    // Already handled in the NumberCard component
-  } else {
-    // Already handled in the NumberCard component
-  }
-};
 
 // Function to move to next slide
 const nextSlide = () => {
@@ -38,10 +30,10 @@ onMounted(() => {
 </script>
 
 <template>
-  <Swiper :slides-per-view="1" :space-between="30" :loop="true" :allow-touch-move="false" class="h-full"
+  <Swiper v-if="shuffledNumbers.length" :slides-per-view="1" :space-between="30" :loop="true" :allow-touch-move="false" class="h-full"
     @swiper="swiperInstance = $event" :speed="500">
     <SwiperSlide v-for="number in shuffledNumbers" :key="number.greek">
-      <NumberCard :number="number" @answer="handleAnswer" @next="nextSlide" />
+      <NumberCard :number="number"  @next="nextSlide" />
     </SwiperSlide>
   </Swiper>
 </template>
