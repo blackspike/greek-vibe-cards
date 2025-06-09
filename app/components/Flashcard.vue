@@ -123,7 +123,7 @@ const handleAnswer = (letter) => {
   <div
     class="h-full flex flex-col items-center justify-center p-6 text-white shadow-2xl rounded-2xl bg-gradient-to-br from-sky-600 to-sky-800 relative">
 
-    <div :class="['flex h-full items-center text-[14rem] font-medium leading-none', currentFont]">
+    <div :class="['flex h-full items-center text-[14rem] -translate-y-6 font-medium leading-none', currentFont]">
       {{ letter.letter }}
     </div>
 

@@ -114,28 +114,28 @@ const handleSubmit = () => {
     <div class="w-full max-w-xs">
       <div class="grid grid-cols-3 gap-2">
         <!-- Numbers 7-9 -->
-        <button v-for="n in ['7', '8', '9']" :key="n" @click="handleDigit(n)" class="btn">
+        <button v-for="n in ['7', '8', '9']" :key="n" @click="handleDigit(n)" class="btn !py-2">
           {{ n }}
         </button>
 
         <!-- Numbers 4-6 -->
-        <button v-for="n in ['4', '5', '6']" :key="n" @click="handleDigit(n)" class="btn">
+        <button v-for="n in ['4', '5', '6']" :key="n" @click="handleDigit(n)" class="btn !py-2">
           {{ n }}
         </button>
 
         <!-- Numbers 1-3 -->
-        <button v-for="n in ['1', '2', '3']" :key="n" @click="handleDigit(n)" class="btn">
+        <button v-for="n in ['1', '2', '3']" :key="n" @click="handleDigit(n)" class="btn !py-2">
           {{ n }}
         </button>
 
         <!-- Zero and Control Buttons -->
-        <button @click="handleHint" class="btn" aria-label="Show answer">
+        <button @click="handleHint" class="btn !py-2 !bg-sky-500/5" aria-label="Show answer">
           <Icon name="bs-icon:question-circle" size="32" />
         </button>
-        <button @click="handleDigit('0')" class="btn">
+        <button @click="handleDigit('0')" class="btn !py-2">
           0
         </button>
-        <button @click="handleBackspace" class="btn" aria-label="Delete last digit">
+        <button @click="handleBackspace" class="btn !py-2 !bg-sky-500/5" aria-label="Delete last digit">
           <Icon name="bs-icon:backspace" size="32" />
         </button>
 
