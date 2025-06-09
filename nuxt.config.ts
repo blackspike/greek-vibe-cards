@@ -26,6 +26,12 @@ export default defineNuxtConfig({
         { property: 'twitter:description', content: 'LEARN GREEK OR DIE: A vibe-coded flashcard app for learning the Greek alphabet and numbers' },
         { property: 'twitter:image', content: '/1200x630.png' }
       ],
+      bodyAttrs: {
+        class: 'bg-sky-900',
+      },
+      htmlAttrs: {
+        class: 'bg-sky-900',
+      },
       link: [
         { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
         { rel: 'manifest', href: '/manifest.json' },

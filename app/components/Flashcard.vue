@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, computed, watch } from 'vue';
 
 const props = defineProps({
   letter: {
@@ -20,6 +20,38 @@ const isPlaying = ref(false);
 const uniqueEquivalents = [
   'ch', 'd', 'f', 'g', 'i', 'l', 'm', 'n', 'o', 'p', 'ps', 'r', 's', 't', 'th', 'v', 'x', 'y', 'z'
 ].sort();
+
+// Define available fonts
+const fonts = [
+  'Garamond',
+  'Times_New_Roman',
+  'Arial',
+  'Inter',
+  'Georgia'
+];
+
+// Create a ref to store current font class
+const currentFont = ref('font-display');
+
+// Function to randomly choose between fonts
+const getRandomFont = () => {
+  return Math.random() < 0.5 ? 'font-display' : 'font-sans';
+};
+
+// Create a method to get a random font class
+const getRandomFontClass = () => {
+  const fontNumber = Math.floor(Math.random() * 11) + 1;
+  return `font-random-${fontNumber}`;
+};
+
+// Store the current font class in a ref so we can force it to update
+const currentFontClass = ref(getRandomFontClass());
+
+// Update font when letter changes
+watch(() => props.letter, () => {
+  currentFont.value = getRandomFont();
+  currentFontClass.value = getRandomFontClass();
+}, { immediate: true });
 
 const updateFailedLetters = (letter, isCorrect) => {
   const failedLetters = JSON.parse(localStorage.getItem('failedLetters') || '{}');
@@ -92,7 +124,7 @@ const handleAnswer = (letter) => {
   <div
     class="h-full flex flex-col items-center justify-center p-6 text-white shadow-2xl rounded-2xl bg-gradient-to-br from-sky-600 to-sky-800 relative">
 
-    <div class="flex h-full items-center text-[14rem] font-medium leading-none font-display -mt-10">
+    <div :class="['flex h-full items-center text-[14rem] font-medium leading-none', currentFont]">
       {{ letter.letter }}
     </div>
 

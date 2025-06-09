@@ -98,7 +98,7 @@ const handleSubmit = () => {
     class="h-full flex flex-col items-center justify-center p-6 text-white shadow-2xl rounded-2xl bg-gradient-to-br from-sky-600 to-sky-800">
 
     <div class="flex flex-col items-center mb-8 w-full">
-      <div class="text-5xl lg:text-6xl font-medium font-sans mb-8 text-center">
+      <div class="text-5xl lg:text-6xl font-medium mb-8 text-center">
         {{ number.greek }}
       </div>
       <div class="text-2xl font-medium bg-sky-500/20 rounded-lg px-4 py-4 w-full max-w-xs text-center relative">
