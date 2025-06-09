@@ -37,7 +37,11 @@ export default defineNuxtConfig({
     provider: 'bunny'
   },
   css: ['~/assets/css/fonts.css','~/assets/css/global.css'],
-  modules: ['@nuxt/icon', '@nuxt/image'],
+  modules: ['@nuxt/icon', '@nuxt/image', '@nuxtjs/plausible'],
+  plausible: {
+    domain: 'vibecards.blackspike.com',
+    ignoredHostnames: ['localhost'],
+  },
   vite: {
     plugins: [
       tailwindcss(),
