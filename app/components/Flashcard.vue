@@ -123,11 +123,12 @@ const handleAnswer = (letter) => {
   <div
     class="h-full flex flex-col items-center justify-center p-6 text-white shadow-2xl rounded-2xl bg-gradient-to-br from-sky-600 to-sky-800 relative">
 
-    <div :class="['flex h-full items-center text-[14rem] -translate-y-6 font-medium leading-none pointer-events-none', currentFont]">
+    <div
+      :class="['flex h-full items-center text-[14rem] -translate-y-6 font-medium leading-none pointer-events-none', currentFont]">
       {{ letter.letter }}
     </div>
 
-    <div class="space-y-8 w-full -mt-10">
+    <div class="space-y-4 w-full -mt-10">
       <div class="flex justify-center">
         <div class="w-full max-w-2xl">
 
@@ -140,8 +141,7 @@ const handleAnswer = (letter) => {
               ]">
               {{ equiv.toUpperCase() }}
             </button>
-            <NuxtLink to="/numbers"
-              class="btn">
+            <NuxtLink to="/numbers" class="btn">
               <Icon name="bs-icon:numbers" size="24" />
             </NuxtLink>
           </div>
@@ -156,18 +156,15 @@ const handleAnswer = (letter) => {
               class="flex-shrink-0 rotate-180 group-open:rotate-0 transition-transform" />
             Hint
           </summary>
-          <div class="flex items-baseline justify-between mt-4">
-            <div class="flex items-baseline gap-2">
-              <p class="text-xl text-sky-200">{{ letter.example.english }}</p>
-            </div>
-            <div class="flex items-baseline gap-4">
-              <p class="text-4xl font-display">{{ letter.example.greek }}</p>
-              <button @click="playExample" :disabled="isPlaying"
-                class="btn aspect-square !rounded-full !p-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-                aria-label="Play example audio">
-                <Icon name="bs-icon:volume" size="24" />
-              </button>
-            </div>
+          <div class="flex items-baseline justify-between mt-3">
+            <p class="text-xl capitalize text-sky-200">{{ letter.example.english }}</p>
+
+            <button @click="playExample" :disabled="isPlaying"
+              class="btn flex gap-3 !items-center !px-3 !py-1 !font-normal transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              aria-label="Play example audio">
+              <span class="text-2xl font-display capitalize">{{ letter.example.greek }}</span>
+              <Icon class="translate-y-0.5" name="bs-icon:volume" size="24" />
+            </button>
           </div>
         </details>
       </div>
