@@ -1,4 +1,4 @@
 @import "tailwindcss";
 @reference "./global.css";
 
-.btn { @apply text-xl border-2 rounded-lg p-1 py-2 transition-all duration-75 ease-out font-semibold bg-sky-500/20 border-sky-500/10 hover:bg-sky-500/30 active:scale-90 active:border-sky-300/30  flex items-center justify-center touch-manipulation select-none}
+.btn { @apply text-xl border-2 rounded-lg p-1 py-1.5 transition-all duration-75 ease-out font-semibold bg-sky-500/20 border-sky-500/10 hover:bg-sky-500/30 active:scale-90 active:border-sky-300/30  flex items-center justify-center touch-manipulation select-none}
