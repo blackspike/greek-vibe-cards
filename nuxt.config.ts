@@ -34,16 +34,84 @@ export default defineNuxtConfig({
       },
       link: [
         { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
-        { rel: 'manifest', href: '/manifest.json' },
-        { rel: 'apple-touch-icon', href: '/1024.png' }
+        { rel: 'apple-touch-icon', href: '/1024.png' },
+        { rel: 'manifest', href: '/manifest.webmanifest' }
       ]
     }
   },
   // Optional: VitePWA module config
   pwa: {
-    registerType: 'autoUpdate', // Keeps service worker up-to-date
-    includeAssets: ['favicon.svg', 'favicon.ico', 'robots.txt'],
+    registerType: 'autoUpdate',
+    includeAssets: ['favicon.ico', 'robots.txt'],
+    manifest: {
+      name: "Greek VibeCards",
+      short_name: "VibeCards",
+      description: "LEARN GREEK OR DIE: A vibe-coded flashcard app for learning the Greek alphabet and numbers",
+      start_url: "/",
+      display: "standalone",
+      background_color: "#003365",
+      theme_color: "#003365",
+      icons: [
+        {
+          src: "/icon-48x48.png",
+          sizes: "48x48",
+          type: "image/png"
+        },
+        {
+          src: "/icon-72x72.png",
+          sizes: "72x72",
+          type: "image/png"
+        },
+        {
+          src: "/icon-96x96.png",
+          sizes: "96x96",
+          type: "image/png"
+        },
+        {
+          src: "/icon-128x128.png",
+          sizes: "128x128",
+          type: "image/png"
+        },
+        {
+          src: "/icon-144x144.png",
+          sizes: "144x144",
+          type: "image/png"
+        },
+        {
+          src: "/icon-152x152.png",
+          sizes: "152x152",
+          type: "image/png"
+        },
+        {
+          src: "/icon-192x192.png",
+          sizes: "192x192",
+          type: "image/png"
+        },
+        {
+          src: "/icon-256x256.png",
+          sizes: "256x256",
+          type: "image/png"
+        },
+        {
+          src: "/icon-384x384.png",
+          sizes: "384x384",
+          type: "image/png"
+        },
+        {
+          src: "/icon-512x512.png",
+          sizes: "512x512",
+          type: "image/png"
+        },
+        {
+          src: "/1024.png",
+          sizes: "1024x1024",
+          type: "image/png"
+        }
+      ]
+    },
     workbox: {
+      navigateFallback: '/index.html',
+      globPatterns: ['**/*.{js,css,html,png,ico,svg,webmanifest}'],
       runtimeCaching: [
         {
           urlPattern: ({ request }) => request.destination === 'document',
