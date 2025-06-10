@@ -39,11 +39,22 @@ export default defineNuxtConfig({
       ]
     }
   },
+  // Optional: VitePWA module config
   pwa: {
-    strategies: 'generateSW',
-    registerType: 'autoUpdate',
+    registerType: 'autoUpdate', // Keeps service worker up-to-date
+    includeAssets: ['favicon.svg', 'favicon.ico', 'robots.txt'],
+    workbox: {
+      runtimeCaching: [
+        {
+          urlPattern: ({ request }) => request.destination === 'document',
+          handler: 'NetworkFirst',
+          options: {
+            cacheName: 'html-cache'
+          }
+        }
+      ]
+    }
   },
-
   css: ['~/assets/css/fonts.css','~/assets/css/global.css','~/assets/css/buttons.css'],
   modules: ['@nuxt/icon', '@nuxt/image', '@nuxtjs/plausible', '@vite-pwa/nuxt'],
   plausible: {
