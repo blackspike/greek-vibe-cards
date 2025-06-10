@@ -15,13 +15,13 @@ export default defineNuxtConfig({
         { name: 'theme-color', content: '#003365' },
         // Open Graph / Facebook
         { property: 'og:type', content: 'website' },
-        { property: 'og:url', content: 'https://greek-vibecards.vercel.app/' },
+        { property: 'og:url', content: 'https://vibecards.blackspike.com/' },
         { property: 'og:title', content: 'Greek VibeCards' },
         { property: 'og:description', content: 'LEARN GREEK OR DIE: A vibe-coded flashcard app for learning the Greek alphabet and numbers' },
         { property: 'og:image', content: '/1200x630.png' },
         // Twitter
         { property: 'twitter:card', content: 'summary_large_image' },
-        { property: 'twitter:url', content: 'https://greek-vibecards.vercel.app/' },
+        { property: 'twitter:url', content: 'https://vibecards.blackspike.com/' },
         { property: 'twitter:title', content: 'Greek VibeCards' },
         { property: 'twitter:description', content: 'LEARN GREEK OR DIE: A vibe-coded flashcard app for learning the Greek alphabet and numbers' },
         { property: 'twitter:image', content: '/1200x630.png' }

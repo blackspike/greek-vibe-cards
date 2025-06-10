@@ -91,6 +91,24 @@ const handleSubmit = () => {
     }, 300);
   }
 };
+
+const isPlaying = ref(false)
+
+const playExample = () => {
+  if (isPlaying.value) return
+
+  isPlaying.value = true
+  const audio = new Audio(`/voice-over-numbers/${props.number.number}.mp3`)
+
+  audio.onended = () => {
+    isPlaying.value = false
+  }
+
+  audio.play().catch(error => {
+    console.error('Error playing audio:', error)
+    isPlaying.value = false
+  })
+}
 </script>
 
 <template>
@@ -145,6 +163,12 @@ const handleSubmit = () => {
             '!bg-red-500/40 !border-red-500 ring-4 ring-red-500/50': showOutline && !isCorrect
           }">
           Enter
+        </button>
+
+        <button @click="playExample" :disabled="isPlaying" class="btn !bg-sky-500/5 col-span-3 w-16 mt-4 mx-auto
+          !rounded-full !p-0 aspect-square !items-center !font-normal transition-colors disabled:opacity-50
+          disabled:cursor-not-allowed" aria-label="Play example audio">
+          <Icon name="bs-icon:volume" size="24" />
         </button>
       </div>
     </div>
