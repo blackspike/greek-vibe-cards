@@ -153,6 +153,15 @@ export const greekAlphabet = [
     }
   },
   {
+    letter: 'ς',
+    name: 'Sigma',
+    equivalent: 's',
+    example: {
+      greek: 'Σοφία',
+      english: 'Wisdom'
+    }
+  },
+  {
     letter: 'σ',
     name: 'Sigma',
     equivalent: 's',
