@@ -12,7 +12,7 @@
   "devDependencies": {
     "@nuxtjs/plausible": "1.2.0",
     "@vite-pwa/nuxt": "1.0.4",
-    "nuxt": "^3.10.3"
+    "nuxt": "^3.17.5"
   },
   "dependencies": {
     "@nuxt/icon": "1.13.0",
