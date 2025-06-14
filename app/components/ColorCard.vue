@@ -99,7 +99,11 @@ const handleColorSelect = (selectedColor) => {
     class="h-full w-full flex flex-col items-center justify-center p-6 text-white shadow-2xl rounded-2xl bg-gradient-to-br from-sky-600 to-sky-800">
 
     <div class="flex flex-col items-center mb-8 w-full">
-      <div class="text-5xl lg:text-6xl font-normal mb-4 text-center">
+      <div class="text-5xl lg:text-6xl font-normal mb-4 text-center transition-colors duration-300"
+        :class="{
+          'text-red-600': isCorrect === false,
+          'text-green-300': isCorrect === true
+        }">
         {{ color.greek }}
       </div>
       <div v-if="showAnswer" class="text-2xl font-medium px-4 py-2 bg-sky-500 rounded-lg">
@@ -110,7 +114,7 @@ const handleColorSelect = (selectedColor) => {
     <div class="w-full max-w-md">
       <div class="grid grid-cols-4 gap-4 m-auto justify-center max-w-[90%]">
         <button v-for="c in shuffledColors" :key="c.english" @click="handleColorSelect(c)"
-          class="btn !border-8 !border-white/20 aspect-square w-full !rounded-full !p-0 transition-transform hover:scale-105"
+          class="btn !border-8 !border-white/20 aspect-square w-full !rounded-full !p-0 transition-all hover:scale-105 hover:shadow-2xl/80"
           :style="{ backgroundColor: c.hex, border: c.hex === '#FFFFFF' ? '2px solid #CBD5E1' : 'none' }">
         </button>
       </div>
@@ -122,8 +126,7 @@ const handleColorSelect = (selectedColor) => {
           <Icon name="bs-icon:question-circle" size="32" />
         </button>
 
-        <button @click="playExample"
-          :disabled="isPlaying"
+        <button @click="playExample" :disabled="isPlaying"
           class="btn !bg-sky-500/5 w-16 !rounded-full !p-0 aspect-square !items-center !font-normal transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           aria-label="Play example audio">
           <Icon name="bs-icon:volume" size="24" />
@@ -142,5 +145,15 @@ const handleColorSelect = (selectedColor) => {
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
+}
+
+@keyframes flash {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.text-red-600,
+.text-green-300 {
+  animation: flash 0.3s;
 }
 </style>
