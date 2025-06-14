@@ -66,7 +66,7 @@ const playExample = () => {
   if (isPlaying.value) return;
 
   isPlaying.value = true;
-  const audio = new Audio(`/voice-over/${props.letter.example.english.toLowerCase()}.mp3`);
+  const audio = new Audio(`/voice-over/words/${props.letter.example.english.toLowerCase()}.mp3`);
 
   audio.onended = () => {
     isPlaying.value = false;

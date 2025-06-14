@@ -65,6 +65,12 @@ onMounted(() => {
               <Icon name="bs-icon:numbers" size="24" />
             </NuxtLink>
 
+            <NuxtLink to="/colors"
+              class="text-white hover:text-sky-300 transition-colors p-2 rounded-lg hover:bg-sky-500/10"
+              aria-label="Switch to Colors Quiz">
+              <Icon name="bs-icon:colors" size="24" />
+            </NuxtLink>
+
             <NuxtLink to="/settings"
               aria-label="Settings"
               class="text-white hover:text-sky-300 transition-colors p-2 rounded-lg hover:bg-sky-500/10">
