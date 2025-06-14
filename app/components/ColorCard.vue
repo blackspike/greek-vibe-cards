@@ -108,7 +108,7 @@ const handleColorSelect = (selectedColor) => {
     </div>
 
     <div class="w-full max-w-md">
-      <div class="grid grid-cols-4 gap-4 m-auto justify-center">
+      <div class="grid grid-cols-4 gap-4 m-auto justify-center max-w-[90%]">
         <button v-for="c in shuffledColors" :key="c.english" @click="handleColorSelect(c)"
           class="btn !border-8 !border-white/20 aspect-square w-full !rounded-full !p-0 transition-transform hover:scale-105"
           :style="{ backgroundColor: c.hex, border: c.hex === '#FFFFFF' ? '2px solid #CBD5E1' : 'none' }">

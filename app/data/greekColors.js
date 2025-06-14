@@ -12,17 +12,17 @@ export const greekColors = [
   {
     english: "Red",
     greek: "Κόκκινο",
-    hex: "#FF0000"
+    hex: "oklch(57.7% 0.245 27.325)"
   },
   {
     english: "Blue",
     greek: "Μπλε",
-    hex: "#0000FF"
+    hex: "oklch(42.4% 0.199 265.638)"
   },
   {
     english: "Green",
     greek: "Πράσινο",
-    hex: "#00FF00"
+    hex: "oklch(62.7% 0.194 149.214)"
   },
   {
     english: "Yellow",
@@ -32,31 +32,31 @@ export const greekColors = [
   {
     english: "Orange",
     greek: "Πορτοκαλί",
-    hex: "#FFA500"
+    hex: "oklch(64.6% 0.222 41.116)"
   },
   {
     english: "Purple",
     greek: "Μωβ",
-    hex: "#800080"
+    hex: "oklch(49.6% 0.265 301.924)"
   },
   {
     english: "Pink",
     greek: "Ροζ",
-    hex: "#FFC0CB"
+    hex: "oklch(71.8% 0.202 349.761)"
   },
   {
     english: "Brown",
     greek: "Καφέ",
-    hex: "#A52A2A"
+    hex: "oklch(0.4353 0.1052 57)"
   },
   {
     english: "Grey",
     greek: "Γκρι",
-    hex: "#808080"
+    hex: "oklch(70.7% 0.022 261.325)"
   },
   {
     english: "Gold",
     greek: "Χρυσό",
-    hex: "#FFD700"
+    hex: "oklch(0.8868 0.1817 95.3305)"
   }
 ]
