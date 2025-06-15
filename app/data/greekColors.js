@@ -2,7 +2,7 @@ export const greekColors = [
   {
     english: "White",
     greek: "Άσπρο",
-    hex: "#FFFFFF"
+    hex: "#ddd"
   },
   {
     english: "Black",
@@ -27,12 +27,12 @@ export const greekColors = [
   {
     english: "Yellow",
     greek: "Κίτρινο",
-    hex: "#FFFF00"
+    hex: "oklch(90.5% 0.182 98.111)"
   },
   {
     english: "Orange",
     greek: "Πορτοκαλί",
-    hex: "oklch(64.6% 0.222 41.116)"
+    hex: "oklch(75% 0.3 56)"
   },
   {
     english: "Purple",
@@ -52,11 +52,11 @@ export const greekColors = [
   {
     english: "Grey",
     greek: "Γκρι",
-    hex: "oklch(70.7% 0.022 261.325)"
+    hex: "oklch(60% 0.022 261.325)"
   },
   {
     english: "Gold",
     greek: "Χρυσό",
-    hex: "oklch(0.8868 0.1817 95.3305)"
+    hex: "oklch(0.85 0.4 96)"
   }
 ]

@@ -99,10 +99,9 @@ const handleColorSelect = (selectedColor) => {
     class="h-full w-full flex flex-col items-center justify-center p-6 text-white shadow-2xl rounded-2xl bg-gradient-to-br from-sky-600 to-sky-800">
 
     <div class="flex flex-col items-center mb-8 w-full">
-      <div class="text-5xl lg:text-6xl font-normal mb-4 text-center transition-colors duration-300"
-        :class="{
-          'text-red-600': isCorrect === false,
-          'text-green-300': isCorrect === true
+      <div class="text-5xl lg:text-6xl font-normal mb-4 text-center transition-colors duration-300" :class="{
+          'text-orange-600': isCorrect === false,
+          'text-green-400': isCorrect === true
         }">
         {{ color.greek }}
       </div>
@@ -112,10 +111,13 @@ const handleColorSelect = (selectedColor) => {
     </div>
 
     <div class="w-full max-w-md">
+
       <div class="grid grid-cols-4 gap-4 m-auto justify-center max-w-[90%]">
-        <button v-for="c in shuffledColors" :key="c.english" @click="handleColorSelect(c)"
+
+        <button v-for="c in shuffledColors" :key="c.english" :aria-label="c.english" @click="handleColorSelect(c)"
           class="btn !border-8 !border-white/20 aspect-square w-full !rounded-full !p-0 transition-all hover:scale-105 hover:shadow-2xl/80"
-          :style="{ backgroundColor: c.hex, border: c.hex === '#FFFFFF' ? '2px solid #CBD5E1' : 'none' }">
+            :class="c.english === 'Gold' ? 'relative after:content-[\'\'] after:absolute after:inset-0 after:rounded-full after:pointer-events-none after:z-10 after:opacity-40 after:bg-[linear-gradient(45deg,_white_0%,_transparent_25%,_white_50%,_transparent_75%,_white_100%)]' : ''"
+          :style=" { backgroundColor: c.hex, border: c.hex==='#FFFFFF' ? '2px solid #CBD5E1' : 'none' }">
         </button>
       </div>
 
