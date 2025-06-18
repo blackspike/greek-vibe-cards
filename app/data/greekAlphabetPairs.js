@@ -100,5 +100,105 @@ export const greekAlphabetPairs = [
       greek: 'ούτε',
       english: 'neither'
     }
+  },
+  // Duplicates with uppercase 'pair' and sentence-cased examples
+  {
+    pair: 'ΜΠ',
+    type: 'consonant',
+    equivalent: 'b',
+    example: {
+      greek: 'Μπανάνα',
+      english: 'Banana'
+    }
+  },
+  {
+    pair: 'ΝΤ',
+    type: 'consonant',
+    equivalent: 'd',
+    example: {
+      greek: 'Ντομάτα',
+      english: 'Tomato'
+    }
+  },
+  {
+    pair: 'ΓΚ',
+    type: 'consonant',
+    equivalent: 'g',
+    example: {
+      greek: 'Γκολ',
+      english: 'Goal'
+    }
+  },
+  {
+    pair: 'ΓΓ',
+    type: 'consonant',
+    equivalent: 'ng',
+    example: {
+      greek: 'Άγγελος',
+      english: 'Angel'
+    }
+  },
+  {
+    pair: 'ΤΣ',
+    type: 'consonant',
+    equivalent: 'ts',
+    example: {
+      greek: 'Τσάι',
+      english: 'Tea'
+    }
+  },
+  {
+    pair: 'ΤΖ',
+    type: 'consonant',
+    equivalent: 'dz',
+    example: {
+      greek: 'Τζάμι',
+      english: 'Windowpane'
+    }
+  },
+  {
+    pair: 'ΑΙ',
+    type: 'vowel',
+    equivalent: 'e',
+    example: {
+      greek: 'Και',
+      english: 'And'
+    }
+  },
+  {
+    pair: 'ΕΙ',
+    type: 'vowel',
+    equivalent: 'i',
+    example: {
+      greek: 'Είναι',
+      english: 'Is'
+    }
+  },
+  {
+    pair: 'ΟΙ',
+    type: 'vowel',
+    equivalent: 'i',
+    example: {
+      greek: 'Οικογένεια',
+      english: 'Family'
+    }
+  },
+  {
+    pair: 'ΥΙ',
+    type: 'vowel',
+    equivalent: 'i',
+    example: {
+      greek: 'Υιός',
+      english: 'Son'
+    }
+  },
+  {
+    pair: 'ΟΥ',
+    type: 'vowel',
+    equivalent: 'ou',
+    example: {
+      greek: 'Ούτε',
+      english: 'Neither'
+    }
   }
 ];
