@@ -98,7 +98,7 @@ const playExample = () => {
   if (isPlaying.value) return
 
   isPlaying.value = true
-  const audio = new Audio(`/voice-over-numbers/${props.number.number}.mp3`)
+  const audio = new Audio(`/voice-over/numbers/${props.number.number}.mp3`)
 
   audio.onended = () => {
     isPlaying.value = false
