@@ -98,7 +98,7 @@ onMounted(() => {
 
     <footer
       class="w-full grid grid-cols-[1fr_auto_1fr] text-sky-100/80 gap-4 [&_a]:text-sky-100/50 [&_a]:hover:text-sky-100 items-center text-sm font-semibold [&_a]:transition-colors">
-      <a href="https://www.blackspike.com">By blackspike.com</a>
+      <a href="https://www.blackspike.com/blog/vibe-coding-a-nuxt-4-pwa/">By blackspike.com</a>
 
       <NuxtLink to="/" aria-label="home">
         <img src="/favicon.svg" alt="Greek VibeCards" class="w-6 h-6" />
