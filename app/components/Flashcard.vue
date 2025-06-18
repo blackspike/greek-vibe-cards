@@ -1,4 +1,6 @@
 <script setup>
+import { greekAlphabet } from '../data/greekAlphabet';
+import { greekAlphabetPairs } from '../data/greekAlphabetPairs';
 
 const props = defineProps({
   letter: {
@@ -15,19 +17,17 @@ const showOutline = ref(false);
 const incorrectButton = ref(null);
 const isPlaying = ref(false);
 
-// Get unique equivalents from the Greek alphabet and sort them alphabetically
-const uniqueEquivalents = [
-  'ch', 'd', 'f', 'g', 'i', 'l', 'm', 'n', 'o', 'p', 'ps', 'r', 's', 't', 'th', 'v', 'x', 'y', 'z'
-].sort();
+// Determine if this is a pair or a single letter
+const isPair = computed(() => 'pair' in props.letter);
 
-// Define available fonts
-const fonts = [
-  'Garamond',
-  'Times_New_Roman',
-  'Arial',
-  'Inter',
-  'Georgia'
-];
+// Get unique equivalents from the correct data source
+const uniqueEquivalents = computed(() => {
+  if (isPair.value) {
+    return Array.from(new Set(greekAlphabetPairs.map(p => p.equivalent))).sort();
+  } else {
+    return Array.from(new Set(greekAlphabet.map(l => l.equivalent))).sort();
+  }
+});
 
 // Create a ref to store current font class
 const currentFont = ref('font-display');
@@ -66,7 +66,9 @@ const playExample = () => {
   if (isPlaying.value) return;
 
   isPlaying.value = true;
-  const audio = new Audio(`/voice-over/words/${props.letter.example.english.toLowerCase()}.mp3`);
+  // Use .pair or .letter for audio path if needed, fallback to .letter
+  const audioKey = isPair.value ? props.letter.example.english.toLowerCase() : props.letter.example.english.toLowerCase();
+  const audio = new Audio(`/voice-over/words/${audioKey}.mp3`);
 
   audio.onended = () => {
     isPlaying.value = false;
@@ -78,19 +80,15 @@ const playExample = () => {
   });
 };
 
-const handleAnswer = (letter) => {
-  if (letter === props.letter.equivalent) {
+const handleAnswer = (answer) => {
+  const correctEquivalent = isPair.value ? props.letter.equivalent : props.letter.equivalent;
+  if (answer === correctEquivalent) {
     isCorrect.value = true;
     isAnswered.value = true;
     showOutline.value = true;
     emit('answer', { correct: true, letter: props.letter });
-
-    // Update failed letters count
-    updateFailedLetters(props.letter.letter, true);
-
-    // Move to next slide immediately
+    updateFailedLetters(isPair.value ? props.letter.pair : props.letter.letter, true);
     emit('next');
-    // Reset state for next slide
     isCorrect.value = null;
     isAnswered.value = false;
     incorrectButton.value = null;
@@ -98,19 +96,13 @@ const handleAnswer = (letter) => {
     isCorrect.value = false;
     isAnswered.value = true;
     showOutline.value = true;
-    incorrectButton.value = letter;
+    incorrectButton.value = answer;
     emit('answer', { correct: false, letter: props.letter });
-
-    // Update failed letters count
-    updateFailedLetters(props.letter.letter, false);
-
-    // Hide outline after 300ms
+    updateFailedLetters(isPair.value ? props.letter.pair : props.letter.letter, false);
     setTimeout(() => {
       showOutline.value = false;
       incorrectButton.value = null;
     }, 300);
-
-    // Reset state after 300ms
     setTimeout(() => {
       isCorrect.value = null;
       isAnswered.value = false;
@@ -125,7 +117,7 @@ const handleAnswer = (letter) => {
 
     <div
       :class="['flex h-full items-center text-[14rem] -translate-y-6 font-medium leading-none pointer-events-none', currentFont]">
-      {{ letter.letter }}
+      {{ isPair ? letter.pair : letter.letter }}
     </div>
 
     <div class="space-y-4 w-full -mt-10">
@@ -141,8 +133,11 @@ const handleAnswer = (letter) => {
               ]">
               {{ equiv.toUpperCase() }}
             </button>
-            <NuxtLink to="/numbers" class="btn">
-              <Icon name="bs-icon:numbers" size="24" />
+            <NuxtLink v-if="isPair" to="/" class="btn" :title="'Switch to Alphabet Game'">
+              <Icon name="bs-icon:alphabet-greek" size="24" />
+            </NuxtLink>
+            <NuxtLink v-else to="/pairs" class="btn" :title="'Switch to Pairs Game'">
+              <Icon name="bs-icon:alphabet-greek" size="24" />
             </NuxtLink>
           </div>
         </div>
@@ -162,7 +157,7 @@ const handleAnswer = (letter) => {
             <button @click="playExample" :disabled="isPlaying"
               class="btn flex gap-3 !items-center !px-3 !py-1 !font-normal transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               aria-label="Play example audio">
-              <span class="text-2xl font-display capitalize">{{ letter.example.greek }}</span>
+              <span class="text-2xl font-display">{{ letter.example.greek }}</span>
               <Icon class="translate-y-0.5" name="bs-icon:volume" size="24" />
             </button>
           </div>
