@@ -84,15 +84,6 @@ export const greekAlphabetPairs = [
     }
   },
   {
-    pair: 'υι',
-    type: 'vowel',
-    equivalent: 'i',
-    example: {
-      greek: 'υιός',
-      english: 'son'
-    }
-  },
-  {
     pair: 'ου',
     type: 'vowel',
     equivalent: 'ou',
@@ -181,15 +172,6 @@ export const greekAlphabetPairs = [
     example: {
       greek: 'Οικογένεια',
       english: 'Family'
-    }
-  },
-  {
-    pair: 'ΥΙ',
-    type: 'vowel',
-    equivalent: 'i',
-    example: {
-      greek: 'Υιός',
-      english: 'Son'
     }
   },
   {
